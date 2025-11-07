@@ -1,7 +1,9 @@
 package com.example.danceschool.service;
 
 import com.example.danceschool.model.ScheduleEntry;
+import com.example.danceschool.model.User;
 import com.example.danceschool.repository.ScheduleEntryRepository;
+import com.example.danceschool.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,12 +15,14 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-public class ScheduleEntryService {
+public class DummyDataService {
 
     private final ScheduleEntryRepository scheduleEntryRepository;
+    private final UserRepository userRepository;
 
-    public ScheduleEntryService(ScheduleEntryRepository scheduleEntryRepository) {
+    public DummyDataService(ScheduleEntryRepository scheduleEntryRepository, UserRepository userRepository) {
         this.scheduleEntryRepository = scheduleEntryRepository;
+        this.userRepository = userRepository;
     }
 
     @Transactional
@@ -41,11 +45,26 @@ public class ScheduleEntryService {
         scheduleEntry.setName("Salsa LA");
         scheduleEntry.setLevel("P2");
         scheduleEntry.setDayOfWeek(DayOfWeek.MONDAY);
-        scheduleEntry.setStartTime(LocalTime.parse("17:00"));
-        scheduleEntry.setEndTime(LocalTime.parse("18:00"));
+        scheduleEntry.setStartTime(LocalTime.parse("18:00"));
+        scheduleEntry.setEndTime(LocalTime.parse("19:00"));
         scheduleEntry.setStartDate(LocalDate.parse("2025-01-01"));
         scheduleEntries.add(scheduleEntry);
 
         scheduleEntryRepository.saveAll(scheduleEntries);
+    }
+
+    @Transactional
+    public void importUsers() {
+        List<User> users = new ArrayList<>();
+        User user;
+
+        user = new User();
+        user.setId(UUID.fromString("57dfee15-304a-4c88-923d-0d7855b889f6"));
+        user.setUsername("jan");
+        user.setEmail("jan@example.com");
+
+        users.add(user);
+
+        userRepository.saveAll(users);
     }
 }

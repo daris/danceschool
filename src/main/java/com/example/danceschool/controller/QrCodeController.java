@@ -7,6 +7,7 @@ import com.example.danceschool.repository.CardScanRepository;
 import com.example.danceschool.repository.ScheduleEntryRepository;
 import com.example.danceschool.repository.UserCardRepository;
 import com.example.danceschool.request.QrCodeRequest;
+import com.example.danceschool.response.ErrorResponse;
 import com.example.danceschool.service.CardScanService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,10 +35,14 @@ public class QrCodeController {
     }
 
     @PostMapping("/qr")
-    public ResponseEntity<List<ScheduleEntry>> qr(@RequestBody QrCodeRequest qrCodeRequest) {
-        Optional<UserCard> userCard = this.userCardRepository.findById(qrCodeRequest.getCardId());
+    public ResponseEntity<?> qr(@RequestBody QrCodeRequest qrCodeRequest) {
+        Optional<UserCard> userCard = userCardRepository.findById(qrCodeRequest.getCardId());
         if (userCard.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ArrayList<>());
+            ErrorResponse error = new ErrorResponse(
+                    "User card not found with id: " + qrCodeRequest.getCardId(),
+                    HttpStatus.NOT_FOUND.value()
+            );
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
         }
 
         UserCard card = userCard.get();
