@@ -3,6 +3,8 @@ package com.example.danceschool.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -23,6 +25,9 @@ public class User {
 
     private LocalDateTime createdAt = LocalDateTime.now();
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<UserCard> cards = new ArrayList<>();
+
     public User() {}
 
     // Getters and setters
@@ -41,4 +46,11 @@ public class User {
     public LocalDateTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
 
+    public List<UserCard> getCards() {
+        return cards;
+    }
+
+    public void setCards(List<UserCard> cards) {
+        this.cards = cards;
+    }
 }
