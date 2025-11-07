@@ -10,7 +10,6 @@ import java.util.UUID;
 public class UserCard {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     private boolean active;
@@ -38,5 +37,9 @@ public class UserCard {
 
     public User getUser() {
         return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

@@ -2,6 +2,7 @@ package com.example.danceschool.service;
 
 import com.example.danceschool.model.ScheduleEntry;
 import com.example.danceschool.model.User;
+import com.example.danceschool.model.UserCard;
 import com.example.danceschool.repository.ScheduleEntryRepository;
 import com.example.danceschool.repository.UserRepository;
 import org.springframework.stereotype.Service;
@@ -62,6 +63,14 @@ public class DummyDataService {
         user.setId(UUID.fromString("57dfee15-304a-4c88-923d-0d7855b889f6"));
         user.setUsername("jan");
         user.setEmail("jan@example.com");
+
+        List<UserCard> userCards = new ArrayList<>();
+        UserCard userCard =  new UserCard();
+        userCard.setId(UUID.fromString("0bf9f152-440f-462d-a31f-c70b974759af"));
+        userCard.setActive(true);
+        userCard.setUser(user);
+        userCards.add(userCard);
+        user.setCards(userCards);
 
         users.add(user);
 
