@@ -16,7 +16,7 @@ public class ImportDataController {
 
     @PostMapping("/import")
     public ResponseEntity<String> importData() {
-//        dummyDataService.importSchedule();
+        dummyDataService.importSchedule();
         dummyDataService.importUsers();
         return ResponseEntity.accepted().body("Imported");
     }

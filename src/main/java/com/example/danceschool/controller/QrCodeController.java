@@ -65,6 +65,6 @@ public class QrCodeController {
         cardScanService.createCardScan(currentCardScan);
 
 //        return ResponseEntity.accepted().body(String.format("Zarejestrowano skan karty dla użytkownika %s", card.getUser().getUsername()));
-        return ResponseEntity.accepted().body(possibleScheduleEntries);
+        return ResponseEntity.ok().body(possibleScheduleEntries);
     }
 }

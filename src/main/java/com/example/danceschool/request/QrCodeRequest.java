@@ -7,10 +7,6 @@ public class QrCodeRequest {
     private UUID cardId;
     private LocalDateTime currentDateTime;
 
-    public QrCodeRequest(UUID cardId) {
-        this.cardId = cardId;
-    }
-
     public UUID getCardId() {
         return cardId;
     }
