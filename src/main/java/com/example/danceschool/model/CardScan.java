@@ -1,10 +1,14 @@
 package com.example.danceschool.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+@Setter
+@Getter
 @Entity
 @Table(name = "card_scans")
 public class CardScan {
@@ -27,18 +31,4 @@ public class CardScan {
 
     public CardScan() {}
 
-    public UUID getId() { return id; }
-    public void setId(UUID id) { this.id = id; }
-
-    public LocalDateTime getScannedAt() { return scannedAt; }
-    public void setScannedAt(LocalDateTime scannedAt) { this.scannedAt = scannedAt; }
-
-    public String getQrCodeData() { return qrCodeData; }
-    public void setQrCodeData(String qrCodeData) { this.qrCodeData = qrCodeData; }
-
-    public User getUser() { return user; }
-    public void setUser(User user) { this.user = user; }
-
-    public UserCard getCard() { return card; }
-    public void setCard(UserCard card) { this.card = card; }
 }
