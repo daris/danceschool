@@ -19,7 +19,7 @@ public class ScheduleEntry {
     private UUID id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "course_id", nullable = false) // this creates the foreign key column
+    @JoinColumn(name = "course_id", nullable = false)
     private Course course;
 
     @Column(nullable = false)
