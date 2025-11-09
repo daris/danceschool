@@ -4,16 +4,13 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.DayOfWeek;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.UUID;
 
 @Setter
 @Getter
 @Entity
-@Table(name = "participants")
-public class Participant {
+@Table(name = "attendances")
+public class Attendance {
 
     @Id
     private UUID id;
@@ -22,6 +19,12 @@ public class Participant {
     @JoinColumn(name = "lesson_id", nullable = false)
     private Lesson lesson;
 
-    public Participant() {}
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+    private AttendanceStatus status;
+
+    public Attendance() {}
 
 }
