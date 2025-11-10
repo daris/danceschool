@@ -1,5 +1,6 @@
 package com.example.danceschool.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,6 +18,7 @@ public class Attendance {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "lesson_id", nullable = false)
+    @JsonBackReference
     private Lesson lesson;
 
     @ManyToOne(fetch = FetchType.LAZY)

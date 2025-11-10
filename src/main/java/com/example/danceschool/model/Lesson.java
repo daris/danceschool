@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Setter
 @Getter
 @Entity
@@ -29,6 +31,7 @@ public class Lesson {
     private Course course;
 
     @OneToMany(mappedBy = "lesson", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<Attendance> attendances = new ArrayList<>();
 
     public Lesson() {}
