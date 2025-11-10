@@ -21,5 +21,11 @@ public class RestConfig implements RepositoryRestConfigurer {
                         .map(Type::getJavaType)
                         .toArray(Class[]::new)
         );
+
+        cors.addMapping("/**")
+                .allowedOrigins("http://localhost:3000")
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                .allowedHeaders("*")
+                .allowCredentials(true);
     }
 }
