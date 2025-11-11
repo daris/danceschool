@@ -1,5 +1,7 @@
 package com.example.danceschool.config;
 
+import com.example.danceschool.model.Course;
+import com.example.danceschool.model.Participant;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.metamodel.Type;
 import org.springframework.beans.factory.annotation.Autowired;
