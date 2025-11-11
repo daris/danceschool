@@ -1,7 +1,7 @@
 package com.example.danceschool.model.projection;
 
 import com.example.danceschool.model.Attendance;
-import com.example.danceschool.model.User;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.rest.core.config.Projection;
 
 import java.util.UUID;
@@ -11,7 +11,6 @@ public interface AttendanceExcerpt {
     UUID getId();
     String getStatus();
 
-    // Optional — to show user info
-    // Instead of full user, just embed username or email
-    UserExcerpt getUser();
+    @Value("#{target.user.id}")
+    UUID getUserId();
 }
