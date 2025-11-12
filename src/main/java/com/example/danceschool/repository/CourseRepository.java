@@ -15,10 +15,4 @@ import java.util.UUID;
         excerptProjection = CourseWithLessonsAndParticipants.class
 )
 public interface CourseRepository extends JpaRepository<Course, UUID> {
-
-    @EntityGraph(attributePaths = {"lessons", "participants"})
-    Optional<Course> findById(UUID id);
-
-//    @Query("SELECT c.name FROM Course c")
-//    List<CourseWithDetailsProjection> findCoursesWithDetails();
 }

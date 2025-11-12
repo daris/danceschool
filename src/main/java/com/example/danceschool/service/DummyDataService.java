@@ -2,15 +2,12 @@ package com.example.danceschool.service;
 
 import com.example.danceschool.model.ScheduleEntry;
 import com.example.danceschool.model.User;
-import com.example.danceschool.model.UserCard;
+import com.example.danceschool.model.UserPass;
 import com.example.danceschool.repository.ScheduleEntryRepository;
 import com.example.danceschool.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.DayOfWeek;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -64,13 +61,13 @@ public class DummyDataService {
         user.setUsername("jan");
         user.setEmail("jan@example.com");
 
-        List<UserCard> userCards = new ArrayList<>();
-        UserCard userCard =  new UserCard();
-        userCard.setId(UUID.fromString("0bf9f152-440f-462d-a31f-c70b974759af"));
-        userCard.setActive(true);
-        userCard.setUser(user);
-        userCards.add(userCard);
-        user.setCards(userCards);
+        List<UserPass> userPasses = new ArrayList<>();
+        UserPass userPass =  new UserPass();
+        userPass.setId(UUID.fromString("0bf9f152-440f-462d-a31f-c70b974759af"));
+//        userPass.setActive(true);
+        userPass.setUser(user);
+        userPasses.add(userPass);
+        user.setPasses(userPasses);
 
         users.add(user);
 

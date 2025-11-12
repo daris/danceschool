@@ -5,18 +5,24 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Setter
 @Getter
 @Entity
-@Table(name = "user_cards")
-public class UserCard {
+@Table(name = "user_passes")
+public class UserPass {
 
     @Id
     private UUID id;
 
-    private boolean active;
+    private LocalDateTime startTime = LocalDateTime.now();
+    private LocalDateTime endTime = LocalDateTime.now();
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Course> courses = new ArrayList<>();
 
     private LocalDateTime createdAt = LocalDateTime.now();
 
@@ -24,6 +30,6 @@ public class UserCard {
     @JoinColumn(name = "user_id", nullable = false) // this creates the foreign key column
     private User user;
 
-    public UserCard() {}
+    public UserPass() {}
 
 }

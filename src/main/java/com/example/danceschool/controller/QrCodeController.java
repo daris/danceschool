@@ -2,7 +2,7 @@ package com.example.danceschool.controller;
 
 import com.example.danceschool.model.CardScan;
 import com.example.danceschool.model.ScheduleEntry;
-import com.example.danceschool.model.UserCard;
+import com.example.danceschool.model.UserPass;
 import com.example.danceschool.repository.CardScanRepository;
 import com.example.danceschool.repository.ScheduleEntryRepository;
 import com.example.danceschool.repository.UserCardRepository;
@@ -36,7 +36,7 @@ public class QrCodeController {
 
     @PostMapping("/qr")
     public ResponseEntity<?> qr(@RequestBody QrCodeRequest qrCodeRequest) {
-        Optional<UserCard> userCard = userCardRepository.findById(qrCodeRequest.getCardId());
+        Optional<UserPass> userCard = userCardRepository.findById(qrCodeRequest.getCardId());
         if (userCard.isEmpty()) {
             ErrorResponse error = new ErrorResponse(
                     "User card not found with id: " + qrCodeRequest.getCardId(),
@@ -45,7 +45,7 @@ public class QrCodeController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
         }
 
-        UserCard card = userCard.get();
+        UserPass card = userCard.get();
 
         List<ScheduleEntry> possibleScheduleEntries = new ArrayList<>();
         LocalDateTime currentDateTime = qrCodeRequest.getCurrentDateTime();
