@@ -13,4 +13,7 @@ public interface AttendanceExcerpt {
 
     @Value("#{target.user.id}")
     UUID getUserId();
+
+    @Value("#{target.lesson.id}")
+    UUID getLessonId();
 }

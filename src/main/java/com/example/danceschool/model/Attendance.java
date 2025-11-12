@@ -18,12 +18,12 @@ public class Attendance {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "lesson_id", nullable = false)
-    @JsonBackReference("lesson-attendances")
+//    @JsonBackReference("lesson-attendances")
     private Lesson lesson;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
-    @JsonBackReference
+//    @JsonBackReference
     private User user;
 
     private AttendanceStatus status;
