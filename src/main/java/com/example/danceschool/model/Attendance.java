@@ -12,8 +12,8 @@ import java.util.UUID;
 @Entity
 @Table(name = "attendances")
 public class Attendance {
-
     @Id
+    @GeneratedValue
     private UUID id;
 
     @ManyToOne(fetch = FetchType.LAZY)
