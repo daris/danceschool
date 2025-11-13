@@ -2,6 +2,7 @@ package com.example.danceschool.controller;
 
 import com.example.danceschool.dto.LoginRequest;
 import com.example.danceschool.dto.LoginResponse;
+import com.example.danceschool.dto.RegisterRequest;
 import com.example.danceschool.jwt.JwtService;
 import com.example.danceschool.model.User;
 import com.example.danceschool.repository.UserRepository;
@@ -12,6 +13,9 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/auth")
@@ -32,9 +36,18 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+    public ResponseEntity<String> register(@RequestBody RegisterRequest request) {
+        User user = new User();              // Create entity instance
+        user.setUsername(request.getUsername());
+        user.setPassword(passwordEncoder.encode(request.getPassword()));
+        user.setEmail(request.getEmail());
+        user.setFirstName(request.getFirstName());
+        user.setLastName(request.getLastName());
+        user.setCreatedAt(LocalDateTime.now());
+        user.setRole("USER");                // default role
+
         userRepository.save(user);
+
         return ResponseEntity.ok().body("Registered");
     }
 
