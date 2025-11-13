@@ -16,7 +16,7 @@ A **Spring Boot 3** REST API for a Dance School application with **JWT authentic
 
 ## Technologies
 
-- Java 17
+- Java 24
 - Spring Boot 3
 - Spring Security 6
 - JWT (JJWT)
@@ -38,11 +38,20 @@ cd danceschool
 ### 2. Build and Run
 
 ```bash
-./gradlew clean build
-./gradlew bootRun
+docker compose up -d
 ```
 
 API will be available at `http://localhost:8080`.
+
+---
+
+### Local development
+
+```bash
+docker compose up -d db
+./gradlew clean build
+./gradlew bootRun
+```
 
 ---
 

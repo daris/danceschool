@@ -13,20 +13,20 @@ services:
     volumes:
       - pg_data:/var/lib/postgresql/data
 
-#  app:
-#    build: .
-#    container_name: spring_app
-#    restart: always
-#    depends_on:
-#      - db
-#    environment:
-#      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/danceschool
-#      SPRING_DATASOURCE_USERNAME: myuser
-#      SPRING_DATASOURCE_PASSWORD: mypassword
-#      SPRING_JPA_HIBERNATE_DDL_AUTO: update
-#      SPRING_JPA_SHOW_SQL: "true"
-#    ports:
-#      - "8080:8080"
+  app:
+    build: .
+    container_name: spring_app
+    restart: always
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/danceschool
+      SPRING_DATASOURCE_USERNAME: myuser
+      SPRING_DATASOURCE_PASSWORD: mypassword
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_SHOW_SQL: "true"
+    ports:
+      - "8080:8080"
 
 volumes:
   pg_data:
