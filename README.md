@@ -77,8 +77,8 @@ Authorization: Bearer <accessToken>
 - Passwords are stored using **BCrypt hashing**.
 - JWT tokens expire after 24 hours (configurable in `JwtService`).
 - Public endpoints:
-    - `/api/auth/register`
-    - `/api/auth/login`
+    - `/auth/register`
+    - `/auth/login`
     - Swagger endpoints (`/swagger-ui/**`, `/v3/api-docs/**`)
 - All other endpoints require JWT authentication.
 
