@@ -8,16 +8,11 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import java.util.Optional;
 import java.util.UUID;
 
-@RepositoryRestResource(excerptProjection = UserWithPasses.class)
+@RepositoryRestResource
 public interface UserRepository extends JpaRepository<User, UUID> {
-
-    // Find user by username
     Optional<User> findByUsername(String username);
-
-    // Find user by email
     Optional<User> findByEmail(String email);
 
-    // Check if a user exists by email or username
     boolean existsByEmail(String email);
     boolean existsByUsername(String username);
 }
