@@ -21,11 +21,22 @@ jobs:
           distribution: 'temurin'
           cache: 'gradle'
 
-      - name: Build app
-        run: docker compose up -d
-
       - name: Grant execute permission for Gradle wrapper
         run: chmod +x gradlew
 
       - name: Run tests
         run: ./gradlew test
+        env:
+          SPRING_PROFILES_ACTIVE: test
+
+      - name: Upload test results (XML)
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-xml
+          path: build/test-results/test
+
+      - name: Upload test reports (HTML)
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-reports-html
+          path: build/reports/tests/test
