@@ -27,7 +27,7 @@ public class CardScan {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "card_id", nullable = false)
-    private UserPass card;
+    private UserCard card;
 
     public CardScan() {}
 
