@@ -55,6 +55,13 @@ docker compose up -d db
 
 ---
 
+### Run tests
+
+```bash
+./gradlew clean test
+```
+
+---
 ### Access Protected Endpoints
 
 Include JWT in request header:
