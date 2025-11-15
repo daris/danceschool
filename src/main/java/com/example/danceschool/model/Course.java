@@ -1,6 +1,5 @@
 package com.example.danceschool.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,6 +15,7 @@ import java.util.UUID;
 public class Course {
 
     @Id
+    @GeneratedValue()
     private UUID id;
 
     @Column(nullable = false)
@@ -25,15 +25,12 @@ public class Course {
     private String level;
 
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
     private List<ScheduleEntry> scheduleEntries = new ArrayList<>();
 
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
     private List<Lesson> lessons = new ArrayList<>();
 
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference("course-participants")
     private List<Participant> participants = new ArrayList<>();
 
     public Course() {}

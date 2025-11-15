@@ -17,6 +17,7 @@ import java.util.UUID;
 public class Lesson {
 
     @Id
+    @GeneratedValue()
     private UUID id;
 
     @Column(nullable = false)

@@ -1,6 +1,7 @@
 package com.example.danceschool.model.projection;
 
 import com.example.danceschool.model.Lesson;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.rest.core.config.Projection;
 
 import java.time.LocalDateTime;
@@ -13,5 +14,8 @@ public interface LessonExcerpt {
     LocalDateTime getStartTime();
     LocalDateTime getEndTime();
     List<AttendanceExcerpt> getAttendances();
+
+    @Value("#{target.course.id}")
+    UUID getCourseId();
 }
 

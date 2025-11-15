@@ -97,7 +97,6 @@ class QrCodeControllerTest {
         users.add(user);
 
         Course course = new Course();
-        course.setId(UUID.randomUUID());
         course.setName("Course 1");
         courseRepository.save(course);
 
