@@ -11,6 +11,5 @@ import java.util.UUID;
 
 @Repository
 public interface ScheduleEntryRepository extends JpaRepository<ScheduleEntry, UUID> {
-
     List<ScheduleEntry> findByDayOfWeekAndStartTimeAfterAndEndTimeBefore(DayOfWeek dayOfWeek, LocalTime startTime, LocalTime endTime);
 }

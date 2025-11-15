@@ -13,12 +13,10 @@ import java.util.UUID;
 @RepositoryRestResource
 public interface UserRepository extends JpaRepository<User, UUID> {
     Optional<User> findByUsername(String username);
-    Optional<User> findByEmail(String email);
 
     boolean existsByEmail(String email);
     boolean existsByUsername(String username);
 
     @Query("SELECT u FROM User u LEFT JOIN FETCH u.passes")
     List<UserWithPasses> findAllWithPasses();
-
 }

@@ -10,7 +10,5 @@ import java.util.UUID;
 
 @Repository
 public interface CardScanRepository extends JpaRepository<CardScan, UUID> {
-    List<CardScan> findByUserId(UUID userId);
-    List<CardScan> findByCardId(UUID cardId);
     List<CardScan> findByCardIdAndScannedAtAfter(UUID cardId, LocalDateTime date);
 }
