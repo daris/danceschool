@@ -24,6 +24,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 
 import static org.mockito.Mockito.when;
@@ -92,8 +93,8 @@ class QrCodeControllerTest {
 
         Lesson lesson = new Lesson();
         lesson.setCourse(course);
-        lesson.setStartTime(LocalDateTime.now());
-        lesson.setEndTime(LocalDateTime.now());
+        lesson.setStartTime(Instant.now());
+        lesson.setEndTime(Instant.now());
         lessonRepository.save(lesson);
 
         QrCodeRequest qrCodeRequest = new QrCodeRequest();

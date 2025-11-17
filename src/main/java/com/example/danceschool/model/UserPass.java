@@ -27,7 +27,7 @@ public class UserPass {
     private LocalDateTime createdAt = LocalDateTime.now();
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false) // this creates the foreign key column
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     public UserPass() {}
