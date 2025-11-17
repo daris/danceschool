@@ -9,7 +9,5 @@ import java.util.UUID;
 @Setter
 @Getter
 public class QrCodeRequest {
-    private UUID cardId;
-    private LocalDateTime currentDateTime;
-
+    private UUID id;
 }
