@@ -4,10 +4,11 @@ import com.example.danceschool.config.MockJwtConfig;
 import com.example.danceschool.config.MockUserDetailsServiceConfig;
 import com.example.danceschool.dto.QrCodeRequest;
 import com.example.danceschool.jwt.JwtService;
-import com.example.danceschool.model.*;
+import com.example.danceschool.model.Course;
+import com.example.danceschool.model.Lesson;
+import com.example.danceschool.model.User;
 import com.example.danceschool.repository.CourseRepository;
 import com.example.danceschool.repository.LessonRepository;
-import com.example.danceschool.repository.ScheduleEntryRepository;
 import com.example.danceschool.repository.UserRepository;
 import com.example.danceschool.service.CustomUserDetailsService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -23,12 +24,8 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.DayOfWeek;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -46,9 +43,6 @@ class QrCodeControllerTest {
 
     @Autowired
     private UserRepository userRepository;
-
-    @Autowired
-    private ScheduleEntryRepository scheduleEntryRepository;
 
     @Autowired
     private ObjectMapper objectMapper;

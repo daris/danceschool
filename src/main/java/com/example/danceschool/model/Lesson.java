@@ -32,7 +32,6 @@ public class Lesson {
     private Course course;
 
     @OneToMany(mappedBy = "lesson", cascade = CascadeType.ALL, orphanRemoval = true)
-//    @JsonManagedReference("lesson-attendances")
     private List<Attendance> attendances = new ArrayList<>();
 
     public Lesson() {}
