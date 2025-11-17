@@ -24,6 +24,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,16 +63,21 @@ class QrCodeControllerTest {
     String authToken = "fake.jwt.token";
 
     void setUpCurrentUser() {
-        when(jwtService.extractUsername(authToken)).thenReturn("john");
-        when(jwtService.isTokenValid(authToken, "john")).thenReturn(true);
+        when(jwtService.extractUsername(authToken)).thenReturn("jan");
+        when(jwtService.isTokenValid(authToken, "jan")).thenReturn(true);
+
+        User user = new User();
+        user.setUsername("jan");
+        user.setEmail("jan@example.com");
+        userRepository.save(user);
 
         UserDetails userDetails = org.springframework.security.core.userdetails.User
-                .withUsername("john")
+                .withUsername("jan")
                 .password("{noop}pass")
                 .roles("USER")
                 .build();
 
-        when(userDetailsService.loadUserByUsername("john")).thenReturn(userDetails);
+        when(userDetailsService.loadUserByUsername("jan")).thenReturn(userDetails);
     }
 
     @BeforeEach
@@ -82,21 +88,14 @@ class QrCodeControllerTest {
     @Test
     void testQr() throws Exception {
         // given
-        List<User> users = new ArrayList<>();
-        User user;
-
-        user = new User();
-        user.setUsername("jan");
-        user.setEmail("jan@example.com");
-        users.add(user);
-        userRepository.saveAll(users);
-
         Course course = new Course();
         course.setName("Course 1");
         courseRepository.save(course);
 
         Lesson lesson = new Lesson();
         lesson.setCourse(course);
+        lesson.setStartTime(LocalDateTime.now());
+        lesson.setEndTime(LocalDateTime.now());
         lessonRepository.save(lesson);
 
         QrCodeRequest qrCodeRequest = new QrCodeRequest();
