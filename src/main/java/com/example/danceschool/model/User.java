@@ -45,8 +45,6 @@ public class User implements UserDetails {
     @JsonIgnore
     private List<Attendance> attendances = new ArrayList<>();
 
-
-    // Role management (optional)
     private String role = "USER";
 
     public User() {}

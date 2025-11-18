@@ -4,6 +4,7 @@ import com.example.danceschool.jwt.JwtAuthFilter;
 import com.example.danceschool.jwt.JwtAuthenticationEntryPoint;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -33,6 +34,9 @@ public class SecurityConfig {
                                 "/swagger-ui.html",
                                 "/v3/api-docs/**"
                         ).permitAll()
+                        .requestMatchers(HttpMethod.PUT, "/users/**", "/courses/**", "/lessons/**", "/participants/**", "/attendances/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PATCH, "/users/**", "/courses/**", "/lessons/**", "/participants/**", "/attendances/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/users/**", "/courses/**", "/lessons/**", "/participants/**", "/attendances/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .exceptionHandling(ex -> ex
