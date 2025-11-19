@@ -3,10 +3,12 @@ package com.example.danceschool.controller;
 import com.example.danceschool.dto.LoginRequest;
 import com.example.danceschool.dto.LoginResponse;
 import com.example.danceschool.dto.RegisterRequest;
+import com.example.danceschool.exception.InvalidCredentialsException;
 import com.example.danceschool.jwt.JwtService;
 import com.example.danceschool.model.User;
 import com.example.danceschool.repository.UserRepository;
 import com.example.danceschool.service.CustomUserDetailsService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -38,15 +40,15 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody RegisterRequest request) {
-        User user = new User();              // Create entity instance
+    public ResponseEntity<String> register(@Valid @RequestBody RegisterRequest request) {
+        User user = new User();
         user.setUsername(request.getUsername());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         user.setEmail(request.getEmail());
         user.setFirstName(request.getFirstName());
         user.setLastName(request.getLastName());
         user.setCreatedAt(LocalDateTime.now());
-        user.setRole("USER");                // default role
+        user.setRole("USER");
 
         userRepository.save(user);
 
@@ -69,7 +71,7 @@ public class AuthController {
 
             return response;
         } catch (AuthenticationException e) {
-            throw new RuntimeException("Invalid credentials");
+            throw new InvalidCredentialsException("Invalid credentials");
         }
     }
 }

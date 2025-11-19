@@ -6,7 +6,10 @@ import com.example.danceschool.dto.QrCodeRequest;
 import com.example.danceschool.dto.QrCodeResponse;
 import com.example.danceschool.dto.QrCodeType;
 import com.example.danceschool.exception.BadRequestException;
-import com.example.danceschool.model.*;
+import com.example.danceschool.model.AttendanceStatus;
+import com.example.danceschool.model.Course;
+import com.example.danceschool.model.Lesson;
+import com.example.danceschool.model.User;
 import com.example.danceschool.repository.ParticipantRepository;
 import com.example.danceschool.service.AttendanceService;
 import com.example.danceschool.service.CourseService;
@@ -15,7 +18,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import org.springframework.http.HttpStatus;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -42,7 +45,7 @@ public class QrCodeController {
             @ApiResponse(responseCode = "404", description = "Lesson not found",
                     content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
     })
-    public ResponseEntity<?> qr(@RequestBody QrCodeRequest qrCodeRequest) {
+    public ResponseEntity<?> qr(@Valid @RequestBody QrCodeRequest qrCodeRequest) {
         if (qrCodeRequest.getType() == QrCodeType.LESSON) {
             Lesson lesson = lessonService.getById(qrCodeRequest.getId());
             User user = securityUtils.getCurrentUser();
