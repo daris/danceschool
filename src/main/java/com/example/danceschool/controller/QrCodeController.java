@@ -3,10 +3,15 @@ package com.example.danceschool.controller;
 import com.example.danceschool.component.SecurityUtils;
 import com.example.danceschool.dto.ErrorResponse;
 import com.example.danceschool.dto.QrCodeRequest;
+import com.example.danceschool.dto.QrCodeResponse;
 import com.example.danceschool.model.*;
 import com.example.danceschool.repository.LessonRepository;
 import com.example.danceschool.repository.ParticipantRepository;
 import com.example.danceschool.service.AttendanceService;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,10 +35,17 @@ public class QrCodeController {
     }
 
     @PostMapping("/qr")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Attendance successfully registered",
+                    content = @Content(schema = @Schema(implementation = QrCodeResponse.class))),
+            @ApiResponse(responseCode = "404", description = "Lesson not found",
+                    content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
+    })
     public ResponseEntity<?> qr(@RequestBody QrCodeRequest qrCodeRequest) {
         Optional<Lesson> lessonOptional = lessonRepository.findById(qrCodeRequest.getId());
         if (lessonOptional.isEmpty()) {
-            return new ResponseEntity<>(new ErrorResponse("Lesson not found"), HttpStatus.NOT_FOUND);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(new ErrorResponse("Lesson not found"));
         }
 
         Lesson lesson = lessonOptional.get();
@@ -50,6 +62,9 @@ public class QrCodeController {
 
         attendanceService.setAttendanceStatusForLesson(lesson, user, AttendanceStatus.NORMAL);
 
-        return ResponseEntity.ok().body("");
+        QrCodeResponse response = new QrCodeResponse();
+        response.setMessage("Zarejestrowano wejście na zajęcia: " + course.getName());
+
+        return ResponseEntity.ok().body(response);
     }
 }
