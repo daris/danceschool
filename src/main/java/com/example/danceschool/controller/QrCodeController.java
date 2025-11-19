@@ -6,12 +6,9 @@ import com.example.danceschool.dto.QrCodeRequest;
 import com.example.danceschool.dto.QrCodeResponse;
 import com.example.danceschool.dto.QrCodeType;
 import com.example.danceschool.exception.BadRequestException;
-import com.example.danceschool.model.AttendanceStatus;
 import com.example.danceschool.model.Course;
 import com.example.danceschool.model.Lesson;
 import com.example.danceschool.model.User;
-import com.example.danceschool.repository.ParticipantRepository;
-import com.example.danceschool.service.AttendanceService;
 import com.example.danceschool.service.CourseService;
 import com.example.danceschool.service.LessonService;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -26,13 +23,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class QrCodeController {
-    private final AttendanceService attendanceService;
     private final SecurityUtils securityUtils;
     private final CourseService courseService;
     private final LessonService lessonService;
 
-    public QrCodeController(AttendanceService attendanceService, SecurityUtils securityUtils, ParticipantRepository participantRepository, CourseService courseService, LessonService lessonService) {
-        this.attendanceService = attendanceService;
+    public QrCodeController(SecurityUtils securityUtils, CourseService courseService, LessonService lessonService) {
         this.securityUtils = securityUtils;
         this.courseService = courseService;
         this.lessonService = lessonService;
@@ -49,10 +44,9 @@ public class QrCodeController {
         if (qrCodeRequest.getType() == QrCodeType.LESSON) {
             Lesson lesson = lessonService.getById(qrCodeRequest.getId());
             User user = securityUtils.getCurrentUser();
-
             Course course = lesson.getCourse();
-            courseService.createParticipantForCourseIfNotAlready(course, user);
-            attendanceService.setAttendanceStatusForLesson(lesson, user, AttendanceStatus.NORMAL);
+
+            courseService.registerAttendanceForCourse(course, lesson, user);
 
             QrCodeResponse response = new QrCodeResponse();
             response.setMessage("Zarejestrowano wejście na zajęcia: " + course.getName());

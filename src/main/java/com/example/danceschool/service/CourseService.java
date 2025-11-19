@@ -1,17 +1,23 @@
 package com.example.danceschool.service;
 
-import com.example.danceschool.model.Course;
-import com.example.danceschool.model.Participant;
-import com.example.danceschool.model.User;
+import com.example.danceschool.dto.CourseAttendancesUpdateDto;
+import com.example.danceschool.model.*;
 import com.example.danceschool.repository.ParticipantRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CourseService {
     private final ParticipantRepository participantRepository;
+    private final AttendanceService attendanceService;
 
-    public CourseService(ParticipantRepository participantRepository) {
+    @Autowired
+    private SimpMessagingTemplate messagingTemplate;
+
+    public CourseService(ParticipantRepository participantRepository, AttendanceService attendanceService) {
         this.participantRepository = participantRepository;
+        this.attendanceService = attendanceService;
     }
 
     public void createParticipantForCourseIfNotAlready(Course course, User user) {
@@ -22,5 +28,22 @@ public class CourseService {
             participant.setCourse(course);
             participantRepository.save(participant);
         }
+    }
+
+    public void registerAttendanceForCourse(Course course, Lesson lesson, User user) {
+        createParticipantForCourseIfNotAlready(course, user);
+        attendanceService.setAttendanceStatusForLesson(lesson, user, AttendanceStatus.NORMAL);
+
+        CourseAttendancesUpdateDto courseAttendancesUpdateDto = new CourseAttendancesUpdateDto();
+        courseAttendancesUpdateDto.setCourseId(course.getId());
+        courseAttendancesUpdateDto.setLessonId(lesson.getId());
+        courseAttendancesUpdateDto.setUserId(user.getId());
+        courseAttendancesUpdateDto.setStatus(AttendanceStatus.NORMAL);
+
+        String topic = "/topic/courses/" + course.getId() + "/attendances";
+        messagingTemplate.convertAndSend(
+                topic,
+                courseAttendancesUpdateDto
+        );
     }
 }

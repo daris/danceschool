@@ -32,7 +32,8 @@ public class SecurityConfig {
                                 "/auth/**",
                                 "/swagger-ui/**",
                                 "/swagger-ui.html",
-                                "/v3/api-docs/**"
+                                "/v3/api-docs/**",
+                                "/ws/**"
                         ).permitAll()
                         .requestMatchers(HttpMethod.POST, "/users/**", "/courses/**", "/lessons/**", "/participants/**", "/attendances/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.PUT, "/users/**", "/courses/**", "/lessons/**", "/participants/**", "/attendances/**").hasRole("ADMIN")
