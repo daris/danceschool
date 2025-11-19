@@ -102,7 +102,7 @@ class QrCodeControllerTest {
         qrCodeRequest.setType(QrCodeType.LESSON);
 
         // when + then
-        mockMvc.perform(post("/qr")
+        mockMvc.perform(post("/api/qr")
                         .header("Authorization", "Bearer " + authToken)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(qrCodeRequest)))

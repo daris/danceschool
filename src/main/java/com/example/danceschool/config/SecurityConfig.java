@@ -29,16 +29,16 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
-                                "/auth/**",
+                                "/api/auth/**",
                                 "/swagger-ui/**",
                                 "/swagger-ui.html",
                                 "/v3/api-docs/**",
                                 "/ws/**"
                         ).permitAll()
-                        .requestMatchers(HttpMethod.POST, "/users/**", "/courses/**", "/lessons/**", "/participants/**", "/attendances/**").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.PUT, "/users/**", "/courses/**", "/lessons/**", "/participants/**", "/attendances/**").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.PATCH, "/users/**", "/courses/**", "/lessons/**", "/participants/**", "/attendances/**").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.DELETE, "/users/**", "/courses/**", "/lessons/**", "/participants/**", "/attendances/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/api/users/**", "/api/courses/**", "/api/lessons/**", "/api/participants/**", "/api/attendances/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "/api/users/**", "/api/courses/**", "/api/lessons/**", "/api/participants/**", "/api/attendances/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PATCH, "/api/users/**", "/api/courses/**", "/api/lessons/**", "/api/participants/**", "/api/attendances/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/api/users/**", "/api/courses/**", "/api/lessons/**", "/api/participants/**", "/api/attendances/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
 //                .exceptionHandling(ex -> ex

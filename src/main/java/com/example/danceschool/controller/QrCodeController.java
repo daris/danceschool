@@ -33,7 +33,7 @@ public class QrCodeController {
         this.lessonService = lessonService;
     }
 
-    @PostMapping("/qr")
+    @PostMapping("/api/qr")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Attendance successfully registered",
                     content = @Content(schema = @Schema(implementation = QrCodeResponse.class))),

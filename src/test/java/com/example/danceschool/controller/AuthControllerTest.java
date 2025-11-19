@@ -47,7 +47,7 @@ class AuthControllerTest {
         request.setFirstName("John");
         request.setLastName("Doe");
 
-        mockMvc.perform(post("/auth/register")
+        mockMvc.perform(post("/api/auth/register")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isOk());
@@ -71,7 +71,7 @@ class AuthControllerTest {
         loginRequest.setUsername("jane");
         loginRequest.setPassword("1q2w#E$R");
 
-        mockMvc.perform(post("/auth/login")
+        mockMvc.perform(post("/api/auth/login")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(loginRequest)))
                 .andExpect(status().isOk())
@@ -85,7 +85,7 @@ class AuthControllerTest {
         loginRequest.setUsername("nonexistent");
         loginRequest.setPassword("wrongpass");
 
-        mockMvc.perform(post("/auth/login")
+        mockMvc.perform(post("/api/auth/login")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(loginRequest)))
                 .andExpect(status().isUnauthorized());

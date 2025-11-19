@@ -1,0 +1,15 @@
+* {
+    # Route /api to backend
+    handle_path /api* {
+        reverse_proxy app:8080
+    }
+
+    handle_path /ws* {
+        reverse_proxy app:8080
+    }
+
+    # Route / to frontend
+    handle {
+        reverse_proxy frontend:3000
+    }
+}
