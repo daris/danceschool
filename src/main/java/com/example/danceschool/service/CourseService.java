@@ -32,13 +32,14 @@ public class CourseService {
 
     public void registerAttendanceForCourse(Course course, Lesson lesson, User user) {
         createParticipantForCourseIfNotAlready(course, user);
-        attendanceService.setAttendanceStatusForLesson(lesson, user, AttendanceStatus.NORMAL);
+        Attendance attendance = attendanceService.setAttendanceStatusForLesson(lesson, user, AttendanceStatus.NORMAL);
 
         CourseAttendancesUpdateDto courseAttendancesUpdateDto = new CourseAttendancesUpdateDto();
         courseAttendancesUpdateDto.setCourseId(course.getId());
+        courseAttendancesUpdateDto.setAttendanceId(attendance.getId());
         courseAttendancesUpdateDto.setLessonId(lesson.getId());
         courseAttendancesUpdateDto.setUserId(user.getId());
-        courseAttendancesUpdateDto.setStatus(AttendanceStatus.NORMAL);
+        courseAttendancesUpdateDto.setStatus(attendance.getStatus());
 
         String topic = "/topic/courses/" + course.getId() + "/attendances";
         messagingTemplate.convertAndSend(
