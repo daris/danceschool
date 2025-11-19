@@ -3,6 +3,7 @@ package com.example.danceschool.controller;
 import com.example.danceschool.config.MockJwtConfig;
 import com.example.danceschool.config.MockUserDetailsServiceConfig;
 import com.example.danceschool.dto.QrCodeRequest;
+import com.example.danceschool.dto.QrCodeType;
 import com.example.danceschool.jwt.JwtService;
 import com.example.danceschool.model.Course;
 import com.example.danceschool.model.Lesson;
@@ -99,6 +100,7 @@ class QrCodeControllerTest {
 
         QrCodeRequest qrCodeRequest = new QrCodeRequest();
         qrCodeRequest.setId(lesson.getId());
+        qrCodeRequest.setType(QrCodeType.LESSON);
 
         // when + then
         mockMvc.perform(post("/qr")

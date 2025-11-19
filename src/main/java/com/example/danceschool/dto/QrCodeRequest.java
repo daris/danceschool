@@ -10,4 +10,5 @@ import java.util.UUID;
 @Getter
 public class QrCodeRequest {
     private UUID id;
+    private QrCodeType type;
 }
