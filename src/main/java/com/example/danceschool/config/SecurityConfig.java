@@ -34,14 +34,15 @@ public class SecurityConfig {
                                 "/swagger-ui.html",
                                 "/v3/api-docs/**"
                         ).permitAll()
+                        .requestMatchers(HttpMethod.POST, "/users/**", "/courses/**", "/lessons/**", "/participants/**", "/attendances/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.PUT, "/users/**", "/courses/**", "/lessons/**", "/participants/**", "/attendances/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.PATCH, "/users/**", "/courses/**", "/lessons/**", "/participants/**", "/attendances/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/users/**", "/courses/**", "/lessons/**", "/participants/**", "/attendances/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
-                .exceptionHandling(ex -> ex
-                        .authenticationEntryPoint(entryPoint)
-                )
+//                .exceptionHandling(ex -> ex
+//                        .authenticationEntryPoint(entryPoint)
+//                )
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 

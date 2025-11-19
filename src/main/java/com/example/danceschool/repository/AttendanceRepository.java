@@ -11,5 +11,5 @@ import java.util.UUID;
 
 @RepositoryRestResource
 public interface AttendanceRepository extends JpaRepository<Attendance, UUID> {
-    Optional<Attendance> findByLessonIsAndUserIs(Lesson lesson, User user);
+    Optional<Attendance> findByLessonAndUser(Lesson lesson, User user);
 }

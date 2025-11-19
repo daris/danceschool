@@ -5,11 +5,12 @@ import com.example.danceschool.dto.ErrorResponse;
 import com.example.danceschool.dto.QrCodeRequest;
 import com.example.danceschool.dto.QrCodeResponse;
 import com.example.danceschool.dto.QrCodeType;
+import com.example.danceschool.exception.BadRequestException;
 import com.example.danceschool.model.*;
-import com.example.danceschool.repository.LessonRepository;
 import com.example.danceschool.repository.ParticipantRepository;
 import com.example.danceschool.service.AttendanceService;
 import com.example.danceschool.service.CourseService;
+import com.example.danceschool.service.LessonService;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -20,20 +21,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Optional;
-
 @RestController
 public class QrCodeController {
-    private final LessonRepository lessonRepository;
     private final AttendanceService attendanceService;
     private final SecurityUtils securityUtils;
     private final CourseService courseService;
+    private final LessonService lessonService;
 
-    public QrCodeController(LessonRepository lessonRepository, AttendanceService attendanceService, SecurityUtils securityUtils, ParticipantRepository participantRepository, CourseService courseService) {
-        this.lessonRepository = lessonRepository;
+    public QrCodeController(AttendanceService attendanceService, SecurityUtils securityUtils, ParticipantRepository participantRepository, CourseService courseService, LessonService lessonService) {
         this.attendanceService = attendanceService;
         this.securityUtils = securityUtils;
         this.courseService = courseService;
+        this.lessonService = lessonService;
     }
 
     @PostMapping("/qr")
@@ -45,13 +44,7 @@ public class QrCodeController {
     })
     public ResponseEntity<?> qr(@RequestBody QrCodeRequest qrCodeRequest) {
         if (qrCodeRequest.getType() == QrCodeType.LESSON) {
-            Optional<Lesson> lessonOptional = lessonRepository.findById(qrCodeRequest.getId());
-            if (lessonOptional.isEmpty()) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                        .body(new ErrorResponse("Lesson not found"));
-            }
-
-            Lesson lesson = lessonOptional.get();
+            Lesson lesson = lessonService.getById(qrCodeRequest.getId());
             User user = securityUtils.getCurrentUser();
 
             Course course = lesson.getCourse();
@@ -64,7 +57,6 @@ public class QrCodeController {
             return ResponseEntity.ok().body(response);
         }
 
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                .body(new ErrorResponse("Invalid type"));
+        throw new BadRequestException("Invalid type of request");
     }
 }

@@ -17,14 +17,14 @@ public class AttendanceService {
         this.attendanceRepository = attendanceRepository;
     }
 
-    public boolean setAttendanceStatusForLesson(Lesson lesson, User user, AttendanceStatus status) {
-        Optional<Attendance> existingAttendance = attendanceRepository.findByLessonIsAndUserIs(lesson, user);
+    public void setAttendanceStatusForLesson(Lesson lesson, User user, AttendanceStatus status) {
+        Optional<Attendance> existingAttendance = attendanceRepository.findByLessonAndUser(lesson, user);
         if (existingAttendance.isPresent()) {
             Attendance attendance = existingAttendance.get();
             attendance.setStatus(status);
             attendanceRepository.save(attendance);
 
-            return true;
+            return;
         }
 
         Attendance attendance = new Attendance();
@@ -32,7 +32,5 @@ public class AttendanceService {
         attendance.setUser(user);
         attendance.setStatus(status);
         attendanceRepository.save(attendance);
-
-        return true;
     }
 }
