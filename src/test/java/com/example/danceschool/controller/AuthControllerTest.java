@@ -50,8 +50,7 @@ class AuthControllerTest {
         mockMvc.perform(post("/auth/register")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(request)))
-                .andExpect(status().isOk())
-                .andExpect(content().string("Registered"));
+                .andExpect(status().isOk());
 
         assertTrue(userRepository.findByUsername("john").isPresent());
     }

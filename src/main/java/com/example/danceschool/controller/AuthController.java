@@ -9,6 +9,7 @@ import com.example.danceschool.model.User;
 import com.example.danceschool.repository.UserRepository;
 import com.example.danceschool.service.CustomUserDetailsService;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -40,7 +41,7 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@Valid @RequestBody RegisterRequest request) {
+    public ResponseEntity<Void> register(@Valid @RequestBody RegisterRequest request) {
         User user = new User();
         user.setUsername(request.getUsername());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
@@ -52,7 +53,7 @@ public class AuthController {
 
         userRepository.save(user);
 
-        return ResponseEntity.ok().body("Registered");
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 
     @PostMapping("/login")
