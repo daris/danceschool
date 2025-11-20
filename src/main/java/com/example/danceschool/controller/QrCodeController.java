@@ -19,9 +19,11 @@ import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/api/")
 public class QrCodeController {
     private final SecurityUtils securityUtils;
     private final CourseService courseService;
@@ -33,7 +35,7 @@ public class QrCodeController {
         this.lessonService = lessonService;
     }
 
-    @PostMapping("/api/qr")
+    @PostMapping("qr")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Attendance successfully registered",
                     content = @Content(schema = @Schema(implementation = QrCodeResponse.class))),

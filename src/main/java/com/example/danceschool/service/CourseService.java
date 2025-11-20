@@ -34,14 +34,18 @@ public class CourseService {
         createParticipantForCourseIfNotAlready(course, user);
         Attendance attendance = attendanceService.setAttendanceStatusForLesson(lesson, user, AttendanceStatus.NORMAL);
 
+        notifyCourseAttendancesChanged(lesson, user, attendance);
+    }
+
+    public void notifyCourseAttendancesChanged(Lesson lesson, User user, Attendance attendance) {
         CourseAttendancesUpdateDto courseAttendancesUpdateDto = new CourseAttendancesUpdateDto();
-        courseAttendancesUpdateDto.setCourseId(course.getId());
+        courseAttendancesUpdateDto.setCourseId(lesson.getCourse().getId());
         courseAttendancesUpdateDto.setAttendanceId(attendance.getId());
         courseAttendancesUpdateDto.setLessonId(lesson.getId());
         courseAttendancesUpdateDto.setUserId(user.getId());
         courseAttendancesUpdateDto.setStatus(attendance.getStatus());
 
-        String topic = "/topic/courses/" + course.getId() + "/attendances";
+        String topic = "/topic/courses/" + lesson.getCourse().getId() + "/attendances";
         messagingTemplate.convertAndSend(
                 topic,
                 courseAttendancesUpdateDto

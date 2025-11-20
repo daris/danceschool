@@ -18,13 +18,10 @@ public class AttendanceService {
     }
 
     public Attendance setAttendanceStatusForLesson(Lesson lesson, User user, AttendanceStatus status) {
-
         Optional<Attendance> existingAttendance = attendanceRepository.findByLessonAndUser(lesson, user);
         if (existingAttendance.isPresent()) {
             Attendance attendance = existingAttendance.get();
-            AttendanceStatus newStatus = attendance.getStatus() == AttendanceStatus.NORMAL ? AttendanceStatus.FULL_PASS : AttendanceStatus.NORMAL;
-
-            attendance.setStatus(newStatus);
+            attendance.setStatus(status);
             attendanceRepository.save(attendance);
 
             return attendance;
