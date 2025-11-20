@@ -1,0 +1,17 @@
+{$SERVER_NAME} {
+    @api path /api* /swagger* /v3* /ws*
+
+    handle @api {
+        reverse_proxy host.docker.internal:8080 {
+            header_up X-Forwarded-Proto {scheme}
+            header_up X-Forwarded-Host {host}
+            header_up X-Forwarded-For {remote}
+        }
+    }
+
+    # Route / to frontend
+    handle {
+        reverse_proxy host.docker.internal:3000
+    }
+}
+

@@ -1,0 +1,63 @@
+version: '3.9'
+services:
+  db:
+    image: postgres:16
+    restart: always
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: danceschool
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+  app:
+    image: ${CONTAINER_REGISTRY_BASE}/app:latest
+    build: .
+    restart: always
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/danceschool
+      SPRING_DATASOURCE_USERNAME: myuser
+      SPRING_DATASOURCE_PASSWORD: mypassword
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_SHOW_SQL: "true"
+      CORS_ALLOWED_ORIGINS: https://localhost/
+    ports:
+      - "8080:8080"
+
+  caddy:
+    image: caddy:2
+    restart: always
+    ports:
+      - "80:80"     # HTTP
+      - "443:443"   # HTTPS
+    depends_on:
+      - app
+      - frontend
+    environment:
+      SERVER_NAME: ${SERVER_NAME:-localhost, caddy:80}
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
+      - ./docker/caddy/prod/Caddyfile:/etc/caddy/Caddyfile
+
+  frontend:
+    image: ${CONTAINER_REGISTRY_BASE}/frontend:latest
+    build:
+      context: ../danceschool-frontend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      NEXT_PUBLIC_API_BASE_URL: /api/
+      NEXT_PUBLIC_WS_URL: /ws/
+    ports:
+      - "3000:3000"
+
+volumes:
+  pg_data:
+  caddy_data:
+  caddy_config:

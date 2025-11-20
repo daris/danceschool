@@ -32,26 +32,38 @@ A **Spring Boot 3** REST API for a Dance School application with **JWT authentic
 
 ```bash
 git clone https://github.com/daris/danceschool.git
+git clone https://github.com/daris/danceschool-frontend.git
 cd danceschool
 ```
 
 ### 2. Build and Run
 
+Production version requires danceschool-frontend repository cloned in the same directory as this repository.
+
 ```bash
-docker compose up -d
+docker compose -f docker-compose.prod.yml up -d
 ```
 
-API will be available at `http://localhost:8080`.
+Application will be available at `https://localhost/`.
 
 ---
 
 ### Local development
 
 ```bash
-docker compose up -d db
+docker compose up -d
+```
+
+Run backend using gradle or by starting app in IntelliJ Idea
+
+```bash
 ./gradlew clean build
 ./gradlew bootRun
 ```
+
+API will be available at `https://localhost/swagger-ui/index.html`.
+
+You can also run `pnpm dev` from danceschool-frontend directory to start frontend in dev mode. Frontend will be available at `https://localhost`.
 
 ---
 
