@@ -9,7 +9,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import java.util.Optional;
 import java.util.UUID;
 
-@RepositoryRestResource
+@RepositoryRestResource(exported = false)
 public interface AttendanceRepository extends JpaRepository<Attendance, UUID> {
     Optional<Attendance> findByLessonAndUser(Lesson lesson, User user);
 }
