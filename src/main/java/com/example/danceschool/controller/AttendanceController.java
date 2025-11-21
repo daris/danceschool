@@ -4,11 +4,14 @@ import com.example.danceschool.dto.*;
 import com.example.danceschool.model.Attendance;
 import com.example.danceschool.model.Lesson;
 import com.example.danceschool.model.User;
+import com.example.danceschool.model.projection.AttendanceExcerpt;
 import com.example.danceschool.service.AttendanceService;
 import com.example.danceschool.service.CourseService;
 import com.example.danceschool.service.LessonService;
 import com.example.danceschool.service.UserService;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.projection.ProjectionFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,6 +26,9 @@ public class AttendanceController {
     private final CourseService courseService;
     private final UserService userService;
 
+    @Autowired
+    private ProjectionFactory projectionFactory;
+
     public AttendanceController(LessonService lessonService, AttendanceService attendanceService, CourseService courseService, UserService userService) {
         this.lessonService = lessonService;
         this.attendanceService = attendanceService;
@@ -31,13 +37,15 @@ public class AttendanceController {
     }
 
     @PostMapping("/set-status")
-    public ResponseEntity<?> qr(@Valid @RequestBody AttendanceStatusRequest qrCodeRequest) {
+    public ResponseEntity<AttendanceExcerpt> setStatus(@Valid @RequestBody AttendanceStatusRequest qrCodeRequest) {
         Lesson lesson = lessonService.getById(qrCodeRequest.getLessonId());
         User user = userService.getById(qrCodeRequest.getUserId());
 
         Attendance attendance = attendanceService.setAttendanceStatusForLesson(lesson, user, qrCodeRequest.getStatus());
         courseService.notifyCourseAttendancesChanged(lesson, user, attendance);
 
-        return ResponseEntity.ok().build();
+        AttendanceExcerpt attendanceExcerpt = projectionFactory.createProjection(AttendanceExcerpt.class, attendance);
+
+        return ResponseEntity.ok().body(attendanceExcerpt);
     }
 }
