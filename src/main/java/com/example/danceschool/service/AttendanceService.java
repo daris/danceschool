@@ -5,17 +5,15 @@ import com.example.danceschool.model.AttendanceStatus;
 import com.example.danceschool.model.Lesson;
 import com.example.danceschool.model.User;
 import com.example.danceschool.repository.AttendanceRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class AttendanceService {
     private final AttendanceRepository attendanceRepository;
-
-    public AttendanceService(AttendanceRepository attendanceRepository) {
-        this.attendanceRepository = attendanceRepository;
-    }
 
     public Attendance setAttendanceStatusForLesson(Lesson lesson, User user, AttendanceStatus status) {
         Optional<Attendance> existingAttendance = attendanceRepository.findByLessonAndUser(lesson, user);

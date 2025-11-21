@@ -10,6 +10,7 @@ import com.example.danceschool.service.CourseService;
 import com.example.danceschool.service.LessonService;
 import com.example.danceschool.service.UserService;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.projection.ProjectionFactory;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/attendances")
 public class AttendanceController {
     private final LessonService lessonService;
@@ -28,13 +30,6 @@ public class AttendanceController {
 
     @Autowired
     private ProjectionFactory projectionFactory;
-
-    public AttendanceController(LessonService lessonService, AttendanceService attendanceService, CourseService courseService, UserService userService) {
-        this.lessonService = lessonService;
-        this.attendanceService = attendanceService;
-        this.courseService = courseService;
-        this.userService = userService;
-    }
 
     @PostMapping("/set-status")
     public ResponseEntity<AttendanceExcerpt> setStatus(@Valid @RequestBody AttendanceStatusRequest qrCodeRequest) {

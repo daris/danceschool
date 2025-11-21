@@ -3,22 +3,19 @@ package com.example.danceschool.service;
 import com.example.danceschool.dto.CourseAttendancesUpdateDto;
 import com.example.danceschool.model.*;
 import com.example.danceschool.repository.ParticipantRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class CourseService {
     private final ParticipantRepository participantRepository;
     private final AttendanceService attendanceService;
 
     @Autowired
     private SimpMessagingTemplate messagingTemplate;
-
-    public CourseService(ParticipantRepository participantRepository, AttendanceService attendanceService) {
-        this.participantRepository = participantRepository;
-        this.attendanceService = attendanceService;
-    }
 
     public void createParticipantForCourseIfNotAlready(Course course, User user) {
         boolean isParticipating = course.getParticipants().stream().anyMatch(participant -> participant.getUser().getId().equals(user.getId()));

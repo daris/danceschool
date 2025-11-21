@@ -16,6 +16,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,17 +24,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/")
 public class QrCodeController {
     private final SecurityUtils securityUtils;
     private final CourseService courseService;
     private final LessonService lessonService;
-
-    public QrCodeController(SecurityUtils securityUtils, CourseService courseService, LessonService lessonService) {
-        this.securityUtils = securityUtils;
-        this.courseService = courseService;
-        this.lessonService = lessonService;
-    }
 
     @PostMapping("qr")
     @ApiResponses({
