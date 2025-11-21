@@ -45,7 +45,6 @@ public class AttendanceController {
         courseService.notifyCourseAttendancesChanged(lesson, user, attendance);
 
         AttendanceExcerpt attendanceExcerpt = projectionFactory.createProjection(AttendanceExcerpt.class, attendance);
-
         return ResponseEntity.ok().body(attendanceExcerpt);
     }
 }

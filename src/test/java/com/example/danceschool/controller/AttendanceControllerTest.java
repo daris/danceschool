@@ -1,12 +1,14 @@
 package com.example.danceschool.controller;
 
-import com.example.danceschool.dto.QrCodeRequest;
-import com.example.danceschool.dto.QrCodeType;
+import com.example.danceschool.dto.AttendanceStatusRequest;
+import com.example.danceschool.model.AttendanceStatus;
 import com.example.danceschool.model.Course;
 import com.example.danceschool.model.Lesson;
+import com.example.danceschool.model.User;
 import com.example.danceschool.repository.CourseRepository;
 import com.example.danceschool.repository.LessonRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,40 +18,39 @@ import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
 @ActiveProfiles("test")
 @AutoConfigureMockMvc
 @Import({BaseControllerTest.TestConfig.class})
-@Transactional // rollback after each test
-class QrCodeControllerTest extends BaseControllerTest {
+@Transactional
+class AttendanceControllerTest extends BaseControllerTest {
 
     @Autowired
-    private MockMvc mockMvc;
+    MockMvc mockMvc;
 
     @Autowired
-    private ObjectMapper objectMapper;
-
-    @Autowired
-    private CourseRepository courseRepository;
+    ObjectMapper objectMapper;
 
     @Autowired
     private LessonRepository lessonRepository;
 
+    @Autowired
+    private CourseRepository courseRepository;
+
     @BeforeEach
     void setUp() {
-        setUpCurrentUser();
+        setUpCurrentUserAdmin();
     }
 
     @Test
-    void testQr() throws Exception {
-        // given
+    void shouldReturnAttendanceExcerpt() throws Exception {
+
         Course course = new Course();
         course.setName("Course 1");
         courseRepository.save(course);
@@ -60,15 +61,25 @@ class QrCodeControllerTest extends BaseControllerTest {
         lesson.setEndTime(Instant.now());
         lessonRepository.save(lesson);
 
-        QrCodeRequest qrCodeRequest = new QrCodeRequest();
-        qrCodeRequest.setId(lesson.getId());
-        qrCodeRequest.setType(QrCodeType.LESSON);
+        User user = new User();
+        user.setUsername("test");
+        user.setEmail("test@test.com");
+        userRepository.save(user);
 
-        // when + then
-        mockMvc.perform(post("/api/qr")
+        AttendanceStatusRequest request = new AttendanceStatusRequest();
+        request.setLessonId(lesson.getId());
+        request.setUserId(user.getId());
+        request.setStatus(AttendanceStatus.NORMAL);
+
+        mockMvc.perform(post("/api/attendances/set-status")
                         .header("Authorization", "Bearer " + authToken)
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(qrCodeRequest)))
-                .andExpect(status().isOk());
+                        .content(objectMapper.writeValueAsString(request)))
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.id").exists())
+                .andExpect(jsonPath("$.status").value("NORMAL"))
+                .andExpect(jsonPath("$.userId").value(user.getId().toString()))
+                .andExpect(jsonPath("$.lessonId").value(lesson.getId().toString()));
     }
 }
