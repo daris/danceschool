@@ -22,7 +22,7 @@ public class AttendanceService {
         Lesson lesson = lessonService.getById(lessonId);
         User user = userService.getById(userId);
 
-        Optional<Attendance> existingAttendance = attendanceRepository.findByLessonAndUser(lesson, user);
+        Optional<Attendance> existingAttendance = attendanceRepository.findByLessonIdAndUserId(lessonId, userId);
         if (existingAttendance.isPresent()) {
             Attendance attendance = existingAttendance.get();
             attendance.setStatus(status);

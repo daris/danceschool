@@ -2,6 +2,7 @@ package com.example.danceschool.service;
 
 import com.example.danceschool.dto.CourseAttendancesUpdateDto;
 import com.example.danceschool.dto.SetAttendanceStatusDto;
+import com.example.danceschool.exception.CourseNotFoundException;
 import com.example.danceschool.exception.ResourceNotFoundException;
 import com.example.danceschool.model.*;
 import com.example.danceschool.repository.CourseRepository;
@@ -23,7 +24,8 @@ public class CourseService {
     private final UserService userService;
 
     public Course getCourseById(UUID courseId) {
-        return courseRepository.findById(courseId).orElseThrow(() -> new ResourceNotFoundException("Course not found"));
+        return courseRepository.findById(courseId)
+                .orElseThrow(() -> new CourseNotFoundException("Course not found with id: " + courseId));
     }
 
     public Course getCourseForLesson(UUID lessonId) {
