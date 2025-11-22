@@ -21,13 +21,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.UUID;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/")
 public class QrCodeController {
     private final SecurityUtils securityUtils;
     private final CourseService courseService;
-    private final LessonService lessonService;
 
     @PostMapping("qr")
     @ApiResponses({
@@ -38,15 +39,16 @@ public class QrCodeController {
     })
     public ResponseEntity<?> qr(@Valid @RequestBody QrCodeRequest qrCodeRequest) {
         if (qrCodeRequest.getType() == QrCodeType.LESSON) {
-            Lesson lesson = lessonService.getById(qrCodeRequest.getId());
+            UUID lessonId = qrCodeRequest.getId();
             User user = securityUtils.getCurrentUser();
-            Course course = lesson.getCourse();
 
             SetAttendanceStatusDto dto = new SetAttendanceStatusDto();
-            dto.setLessonId(lesson.getId());
+            dto.setLessonId(lessonId);
             dto.setUserId(user.getId());
             dto.setStatus(AttendanceStatus.NORMAL);
             courseService.setAttendanceStatusForLesson(dto);
+
+            Course course = courseService.getCourseForLesson(lessonId);
 
             QrCodeResponse response = new QrCodeResponse();
             response.setMessage("Zarejestrowano wejście na zajęcia: " + course.getName());
