@@ -1,14 +1,13 @@
 package com.example.danceschool.repository;
 
 import com.example.danceschool.model.User;
-import com.example.danceschool.model.projection.UserWithPasses;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import java.util.Optional;
 import java.util.UUID;
 
-@RepositoryRestResource(excerptProjection = UserWithPasses.class)
+@RepositoryRestResource(exported = false)
 public interface UserRepository extends JpaRepository<User, UUID> {
     Optional<User> findByUsername(String username);
 }

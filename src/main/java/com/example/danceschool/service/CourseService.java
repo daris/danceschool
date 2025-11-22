@@ -26,7 +26,6 @@ public class CourseService {
     private final CourseRepository courseRepository;
     private final ParticipantService participantService;
     private final CourseMapper courseMapper;
-    private final AttendanceMapper attendanceMapper;
 
     public List<CourseDto> getAllCourses() {
         return courseRepository.findAll().stream()

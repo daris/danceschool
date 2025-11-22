@@ -1,19 +1,22 @@
 package com.example.danceschool.service;
 
-import com.example.danceschool.exception.UserNotFoundException;
-import com.example.danceschool.model.User;
+import com.example.danceschool.dto.UserDto;
+import com.example.danceschool.mapper.UserMapper;
 import com.example.danceschool.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
+    private final UserMapper userMapper;
 
-    public User getById(UUID id) {
-        return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User not found with id: " + id));
+    public List<UserDto> getAllUsers() {
+        return userRepository.findAll().stream()
+                .map(userMapper::toDto)
+                .toList();
     }
 }
