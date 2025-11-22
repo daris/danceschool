@@ -32,6 +32,5 @@ public class LessonController {
         private Instant startTime;
         private Instant endTime;
         private UUID courseId;
-
     }
 }
