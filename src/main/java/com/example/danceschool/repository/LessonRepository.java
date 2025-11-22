@@ -6,6 +6,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import java.util.UUID;
 
-@RepositoryRestResource
+@RepositoryRestResource(exported = false)
 public interface LessonRepository extends JpaRepository<Lesson, UUID> {
 }
