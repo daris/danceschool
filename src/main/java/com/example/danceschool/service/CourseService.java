@@ -1,8 +1,12 @@
 package com.example.danceschool.service;
 
+import com.example.danceschool.dto.AttendanceDto;
 import com.example.danceschool.dto.CourseAttendancesUpdateDto;
+import com.example.danceschool.dto.CourseDto;
 import com.example.danceschool.dto.SetAttendanceStatusDto;
 import com.example.danceschool.exception.CourseNotFoundException;
+import com.example.danceschool.mapper.AttendanceMapper;
+import com.example.danceschool.mapper.CourseMapper;
 import com.example.danceschool.model.Attendance;
 import com.example.danceschool.model.Course;
 import com.example.danceschool.model.Lesson;
@@ -11,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -20,25 +25,35 @@ public class CourseService {
     private final SimpMessagingTemplate messagingTemplate;
     private final CourseRepository courseRepository;
     private final ParticipantService participantService;
+    private final CourseMapper courseMapper;
+    private final AttendanceMapper attendanceMapper;
 
-    public Course getCourseById(UUID courseId) {
-        return courseRepository.findById(courseId)
+    public List<CourseDto> getAllCourses() {
+        return courseRepository.findAll().stream()
+                .map(courseMapper::toDto)
+                .toList();
+    }
+
+    public CourseDto getCourseById(UUID courseId) {
+        Course course = courseRepository.findById(courseId)
                 .orElseThrow(() -> new CourseNotFoundException("Course not found with id: " + courseId));
+        return courseMapper.toDto(course);
     }
 
-    public Course getCourseForLesson(UUID lessonId) {
-        return courseRepository.findByLessonId(lessonId)
+    public CourseDto getCourseForLesson(UUID lessonId) {
+        Course course = courseRepository.findByLessonId(lessonId)
                 .orElseThrow(() -> new CourseNotFoundException("Course not found for lesson with id: " + lessonId));
+        return courseMapper.toDto(course);
     }
 
-    public Attendance setAttendanceStatusForLesson(SetAttendanceStatusDto dto) {
-        Course course = getCourseForLesson(dto.getLessonId());
+    public AttendanceDto setAttendanceStatusForLesson(SetAttendanceStatusDto dto) {
+        CourseDto course = getCourseForLesson(dto.getLessonId());
 
         if (dto.isCreateParticipant()) {
             participantService.createParticipantForCourseIfNotAlready(course.getId(), dto.getUserId());
         }
 
-        Attendance attendance = attendanceService.setAttendanceStatusForLesson(dto.getLessonId(), dto.getUserId(), dto.getStatus());
+        AttendanceDto attendance = attendanceService.setAttendanceStatusForLesson(dto.getLessonId(), dto.getUserId(), dto.getStatus());
 
         CourseAttendancesUpdateDto updateDto = new CourseAttendancesUpdateDto(course.getId(), attendance.getId(), dto.getLessonId(), dto.getUserId(), dto.getStatus());
         notifyCourseAttendancesChanged(updateDto);

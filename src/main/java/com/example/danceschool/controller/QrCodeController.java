@@ -48,7 +48,7 @@ public class QrCodeController {
             dto.setStatus(AttendanceStatus.NORMAL);
             courseService.setAttendanceStatusForLesson(dto);
 
-            Course course = courseService.getCourseForLesson(lessonId);
+            CourseDto course = courseService.getCourseForLesson(lessonId);
 
             QrCodeResponse response = new QrCodeResponse();
             response.setMessage("Zarejestrowano wejście na zajęcia: " + course.getName());

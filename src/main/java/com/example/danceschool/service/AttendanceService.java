@@ -1,5 +1,7 @@
 package com.example.danceschool.service;
 
+import com.example.danceschool.dto.AttendanceDto;
+import com.example.danceschool.mapper.AttendanceMapper;
 import com.example.danceschool.model.Attendance;
 import com.example.danceschool.model.AttendanceStatus;
 import com.example.danceschool.model.Lesson;
@@ -19,21 +21,22 @@ public class AttendanceService {
     private final AttendanceRepository attendanceRepository;
     private final LessonRepository lessonRepository;
     private final UserRepository userRepository;
+    private final AttendanceMapper attendanceMapper;
 
-    public Attendance setAttendanceStatusForLesson(UUID lessonId, UUID userId, AttendanceStatus status) {
+    public AttendanceDto setAttendanceStatusForLesson(UUID lessonId, UUID userId, AttendanceStatus status) {
         Optional<Attendance> existingAttendance = attendanceRepository.findByLessonIdAndUserId(lessonId, userId);
         if (existingAttendance.isPresent()) {
             Attendance attendance = existingAttendance.get();
             attendance.setStatus(status);
             attendanceRepository.save(attendance);
 
-            return attendance;
+            return attendanceMapper.toDto(attendance);
         }
 
         return createAttendance(lessonId, userId, status);
     }
 
-    private Attendance createAttendance(UUID lessonId, UUID userId, AttendanceStatus status) {
+    public AttendanceDto createAttendance(UUID lessonId, UUID userId, AttendanceStatus status) {
         Lesson lessonProxy = lessonRepository.getReferenceById(lessonId);
         User userProxy = userRepository.getReferenceById(userId);
 
@@ -42,6 +45,7 @@ public class AttendanceService {
         attendance.setUser(userProxy);
         attendance.setStatus(status);
         attendanceRepository.save(attendance);
-        return attendance;
+
+        return attendanceMapper.toDto(attendance);
     }
 }
