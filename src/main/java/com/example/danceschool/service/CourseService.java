@@ -18,7 +18,6 @@ import java.util.UUID;
 public class CourseService {
     private final AttendanceService attendanceService;
     private final SimpMessagingTemplate messagingTemplate;
-    private final LessonService lessonService;
     private final CourseRepository courseRepository;
     private final ParticipantService participantService;
 
@@ -28,8 +27,8 @@ public class CourseService {
     }
 
     public Course getCourseForLesson(UUID lessonId) {
-        Lesson lesson = lessonService.getById(lessonId);
-        return lesson.getCourse();
+        return courseRepository.findByLessonId(lessonId)
+                .orElseThrow(() -> new CourseNotFoundException("Course not found for lesson with id: " + lessonId));
     }
 
     public Attendance setAttendanceStatusForLesson(SetAttendanceStatusDto dto) {
