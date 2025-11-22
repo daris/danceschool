@@ -13,9 +13,7 @@ import org.springframework.stereotype.Service;
 public class CourseService {
     private final ParticipantRepository participantRepository;
     private final AttendanceService attendanceService;
-
-    @Autowired
-    private SimpMessagingTemplate messagingTemplate;
+    private final SimpMessagingTemplate messagingTemplate;
 
     public void createParticipantForCourseIfNotAlready(Course course, User user) {
         boolean isParticipating = course.getParticipants().stream().anyMatch(participant -> participant.getUser().getId().equals(user.getId()));

@@ -27,9 +27,7 @@ public class AttendanceController {
     private final AttendanceService attendanceService;
     private final CourseService courseService;
     private final UserService userService;
-
-    @Autowired
-    private ProjectionFactory projectionFactory;
+    private final ProjectionFactory projectionFactory;
 
     @PostMapping("/set-status")
     public ResponseEntity<AttendanceExcerpt> setStatus(@Valid @RequestBody AttendanceStatusRequest qrCodeRequest) {
