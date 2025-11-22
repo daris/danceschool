@@ -9,5 +9,5 @@ import java.util.UUID;
 
 @RepositoryRestResource(exported = false)
 public interface AttendanceRepository extends JpaRepository<Attendance, UUID> {
-    Optional<Attendance> findByLessonIdAndUserId(UUID lessonId, UUID user);
+    Optional<Attendance> findByLessonIdAndUserId(UUID lessonId, UUID userId);
 }
