@@ -1,11 +1,9 @@
 package com.example.danceschool.controller;
 
 import com.example.danceschool.component.SecurityUtils;
-import com.example.danceschool.dto.ErrorResponse;
-import com.example.danceschool.dto.QrCodeRequest;
-import com.example.danceschool.dto.QrCodeResponse;
-import com.example.danceschool.dto.QrCodeType;
+import com.example.danceschool.dto.*;
 import com.example.danceschool.exception.BadRequestException;
+import com.example.danceschool.model.AttendanceStatus;
 import com.example.danceschool.model.Course;
 import com.example.danceschool.model.Lesson;
 import com.example.danceschool.model.User;
@@ -44,7 +42,11 @@ public class QrCodeController {
             User user = securityUtils.getCurrentUser();
             Course course = lesson.getCourse();
 
-            courseService.registerAttendanceForCourse(course, lesson, user);
+            SetAttendanceStatusDto dto = new SetAttendanceStatusDto();
+            dto.setLessonId(lesson.getId());
+            dto.setUserId(user.getId());
+            dto.setStatus(AttendanceStatus.NORMAL);
+            courseService.setAttendanceStatusForLesson(dto);
 
             QrCodeResponse response = new QrCodeResponse();
             response.setMessage("Zarejestrowano wejście na zajęcia: " + course.getName());

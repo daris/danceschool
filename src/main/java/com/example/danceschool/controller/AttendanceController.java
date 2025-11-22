@@ -1,6 +1,7 @@
 package com.example.danceschool.controller;
 
 import com.example.danceschool.dto.AttendanceStatusRequest;
+import com.example.danceschool.dto.SetAttendanceStatusDto;
 import com.example.danceschool.model.Attendance;
 import com.example.danceschool.model.Lesson;
 import com.example.danceschool.model.User;
@@ -21,17 +22,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RequestMapping("/api/attendances")
 public class AttendanceController {
-    private final LessonService lessonService;
     private final CourseService courseService;
-    private final UserService userService;
     private final ProjectionFactory projectionFactory;
 
     @PostMapping("/set-status")
-    public ResponseEntity<AttendanceExcerpt> setStatus(@Valid @RequestBody AttendanceStatusRequest qrCodeRequest) {
-        Lesson lesson = lessonService.getById(qrCodeRequest.getLessonId());
-        User user = userService.getById(qrCodeRequest.getUserId());
-
-        Attendance attendance = courseService.setAttendanceStatusForLesson(lesson, user, qrCodeRequest.getStatus());
+    public ResponseEntity<AttendanceExcerpt> setStatus(@Valid @RequestBody AttendanceStatusRequest request) {
+        SetAttendanceStatusDto dto = new SetAttendanceStatusDto();
+        dto.setLessonId(request.getLessonId());
+        dto.setUserId(request.getUserId());
+        dto.setStatus(request.getStatus());
+        dto.setCreateParticipant(true);
+        Attendance attendance = courseService.setAttendanceStatusForLesson(dto);
 
         AttendanceExcerpt attendanceExcerpt = projectionFactory.createProjection(AttendanceExcerpt.class, attendance);
         return ResponseEntity.ok().body(attendanceExcerpt);

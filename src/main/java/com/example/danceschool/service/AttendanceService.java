@@ -9,13 +9,19 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
 public class AttendanceService {
     private final AttendanceRepository attendanceRepository;
+    private final LessonService lessonService;
+    private final UserService userService;
 
-    public Attendance setAttendanceStatusForLesson(Lesson lesson, User user, AttendanceStatus status) {
+    public Attendance setAttendanceStatusForLesson(UUID lessonId, UUID userId, AttendanceStatus status) {
+        Lesson lesson = lessonService.getById(lessonId);
+        User user = userService.getById(userId);
+
         Optional<Attendance> existingAttendance = attendanceRepository.findByLessonAndUser(lesson, user);
         if (existingAttendance.isPresent()) {
             Attendance attendance = existingAttendance.get();
@@ -25,12 +31,15 @@ public class AttendanceService {
             return attendance;
         }
 
+        return createAttendance(lesson, user, status);
+    }
+
+    private Attendance createAttendance(Lesson lesson, User user, AttendanceStatus status) {
         Attendance attendance = new Attendance();
         attendance.setLesson(lesson);
         attendance.setUser(user);
         attendance.setStatus(status);
         attendanceRepository.save(attendance);
-
         return attendance;
     }
 }
