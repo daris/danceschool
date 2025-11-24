@@ -16,6 +16,7 @@ import java.util.UUID;
 public class UserPass {
 
     @Id
+    @GeneratedValue
     private UUID id;
 
     private LocalDateTime startTime = LocalDateTime.now();
