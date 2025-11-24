@@ -6,7 +6,6 @@ import com.example.danceschool.repository.LessonRepository;
 import com.example.danceschool.repository.UserRepository;
 import com.example.danceschool.repository.ParticipantRepository;
 import com.example.danceschool.repository.AttendanceRepository;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
-import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -34,7 +32,6 @@ class CourseControllerTest extends BaseControllerTest {
     @Autowired
     MockMvc mockMvc;
 
-    @Autowired ObjectMapper objectMapper;
     @Autowired CourseRepository courseRepository;
     @Autowired LessonRepository lessonRepository;
     @Autowired UserRepository userRepository;
