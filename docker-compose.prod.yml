@@ -1,5 +1,21 @@
 version: '3.9'
 services:
+  kafka:
+    image: apache/kafka:latest
+    environment:
+      KAFKA_NODE_ID: 1
+      KAFKA_PROCESS_ROLES: broker,controller
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092,CONTROLLER://0.0.0.0:9093
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@kafka:9093
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_NUM_PARTITIONS: 3
+
   db:
     image: postgres:16
     restart: always
@@ -18,6 +34,7 @@ services:
     restart: always
     depends_on:
       - db
+      - kafka
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/danceschool
       SPRING_DATASOURCE_USERNAME: myuser
@@ -25,8 +42,20 @@ services:
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
       SPRING_JPA_SHOW_SQL: "true"
       CORS_ALLOWED_ORIGINS: https://localhost/
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
     ports:
       - "8080:8080"
+
+  notifications-app:
+    image: ${CONTAINER_REGISTRY_BASE}/notifications-app:latest
+    build:
+      context: ../danceschool-notifications
+      dockerfile: Dockerfile
+    restart: always
+    depends_on:
+      - kafka
+    environment:
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
 
   caddy:
     image: caddy:2
