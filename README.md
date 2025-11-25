@@ -23,6 +23,7 @@ A **Spring Boot 3** REST API for a Dance School application with **JWT authentic
 - Spring Data JPA
 - Lombok
 - Springdoc OpenAPI (Swagger UI)
+- Kafka
 
 ---
 
@@ -33,12 +34,13 @@ A **Spring Boot 3** REST API for a Dance School application with **JWT authentic
 ```bash
 git clone https://github.com/daris/danceschool.git
 git clone https://github.com/daris/danceschool-frontend.git
+git clone https://github.com/daris/danceschool-notifications.git
 cd danceschool
 ```
 
 ### 2. Build and Run
 
-Production version requires danceschool-frontend repository cloned in the same directory as this repository.
+Production version requires danceschool-frontend and danceschool-notifications repository cloned in the same directory as this repository.
 
 ```bash
 docker compose -f docker-compose.prod.yml up -d

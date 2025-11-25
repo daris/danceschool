@@ -3,11 +3,13 @@ package com.example.danceschool.controller;
 import com.example.danceschool.dto.LoginRequest;
 import com.example.danceschool.dto.LoginResponse;
 import com.example.danceschool.dto.RegisterRequest;
+import com.example.danceschool.event.UserEvent;
 import com.example.danceschool.exception.InvalidCredentialsException;
 import com.example.danceschool.jwt.JwtService;
 import com.example.danceschool.model.User;
 import com.example.danceschool.repository.UserRepository;
 import com.example.danceschool.service.CustomUserDetailsService;
+import com.example.danceschool.service.KafkaProducer;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -32,6 +34,7 @@ public class AuthController {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final CustomUserDetailsService userDetailsService;
+    private final KafkaProducer producer;
 
     @PostMapping("/register")
     public ResponseEntity<Void> register(@Valid @RequestBody RegisterRequest request) {
@@ -45,6 +48,8 @@ public class AuthController {
         user.setRole("USER");
 
         userRepository.save(user);
+
+        producer.sendMessage("user-created", new UserEvent(user.getId(), user.getUsername()));
 
         return ResponseEntity.status(HttpStatus.OK).build();
     }
