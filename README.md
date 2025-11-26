@@ -88,7 +88,7 @@ Authorization: Bearer <accessToken>
 
 ## Swagger UI
 
-- URL: `http://localhost:8080/swagger-ui.html`
+- URL: `https://localhost/swagger-ui/index.html`
 - Use the **Authorize** button to enter your JWT for testing protected endpoints.
 
 ---
