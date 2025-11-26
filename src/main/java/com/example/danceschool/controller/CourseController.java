@@ -1,7 +1,9 @@
 package com.example.danceschool.controller;
 
 import com.example.danceschool.dto.CourseDto;
+import com.example.danceschool.dto.CourseRequest;
 import com.example.danceschool.service.CourseService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,9 +23,16 @@ public class CourseController {
         return ResponseEntity.ok(courses);
     }
 
+    @PostMapping
+    public ResponseEntity<CourseDto> createCourse(@Valid @RequestBody CourseRequest request) {
+        CourseDto courseDto = courseService.createCourse(request.getName(), request.getLevel());
+        return ResponseEntity.ok(courseDto);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<CourseDto> getCourseById(@PathVariable UUID id) {
         CourseDto course = courseService.getCourseById(id);
         return ResponseEntity.ok(course);
     }
+
 }

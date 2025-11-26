@@ -45,6 +45,16 @@ public class CourseService {
         return courseMapper.toDto(course);
     }
 
+    public CourseDto createCourse(String name, String level) {
+        Course course = new Course();
+        course.setName(name);
+        course.setLevel(level);
+
+        courseRepository.save(course);
+
+        return courseMapper.toDto(course);
+    }
+
     public AttendanceDto setAttendanceStatusForLesson(SetAttendanceStatusDto dto) {
         CourseDto course = getCourseForLesson(dto.getLessonId());
 
