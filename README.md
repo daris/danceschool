@@ -48,6 +48,14 @@ docker compose -f docker-compose.prod.yml up -d
 
 Application will be available at `https://localhost/`.
 
+You can log in on admin account:
+```
+Username: admin
+Password: securepass123
+```
+
+Credentials are defined in docker-compose.prod.yml: `services.app.environment.ADMIN_USERNAME`
+
 ---
 
 ### Local development
