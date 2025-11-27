@@ -25,9 +25,6 @@ public class Course {
     private String level;
 
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ScheduleEntry> scheduleEntries = new ArrayList<>();
-
-    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
     @OrderBy("startTime ASC")
     private List<Lesson> lessons = new ArrayList<>();
 
