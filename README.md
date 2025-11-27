@@ -16,7 +16,7 @@ A **Spring Boot 3** REST API for a Dance School application with **JWT authentic
 
 ## Technologies
 
-- Java 24
+- Java 21
 - Spring Boot 3
 - Spring Security 6
 - JWT (JJWT)
