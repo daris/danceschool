@@ -1,7 +1,7 @@
 package com.example.danceschool.config;
 
 import com.example.danceschool.jwt.JwtAuthFilter;
-import com.example.danceschool.jwt.JwtAuthenticationEntryPoint;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -24,7 +24,7 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http, JwtAuthenticationEntryPoint entryPoint) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
@@ -41,9 +41,13 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.DELETE, "/api/users/**", "/api/courses/**", "/api/lessons/**", "/api/participants/**", "/api/attendances/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
-//                .exceptionHandling(ex -> ex
-//                        .authenticationEntryPoint(entryPoint)
-//                )
+                .exceptionHandling(exception -> exception
+                        .accessDeniedHandler((request, response, accessDeniedException) -> {
+                            response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+                            response.setContentType("application/json");
+                            response.getWriter().write("{\"message\": \"Access denied\"}");
+                        })
+                )
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
