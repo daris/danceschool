@@ -27,6 +27,6 @@ public class AttendanceController {
         dto.setCreateParticipant(true);
 
         AttendanceDto attendance = courseService.setAttendanceStatusForLesson(dto);
-        return ResponseEntity.ok().body(attendance);
+        return ResponseEntity.ok(attendance);
     }
 }

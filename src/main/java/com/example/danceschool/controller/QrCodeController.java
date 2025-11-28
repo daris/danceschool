@@ -48,9 +48,9 @@ public class QrCodeController {
             CourseDto course = courseService.getCourseForLesson(lessonId);
 
             QrCodeResponse response = new QrCodeResponse();
-            response.setMessage("Zarejestrowano wejście na zajęcia: " + course.getName());
+            response.setMessage("Registered attendance for a course: " + course.getName());
 
-            return ResponseEntity.ok().body(response);
+            return ResponseEntity.ok(response);
         }
 
         throw new BadRequestException("Invalid type of request");
