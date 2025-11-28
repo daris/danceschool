@@ -1,5 +1,6 @@
 package com.example.danceschool.controller;
 
+import com.example.danceschool.dto.LessonRequest;
 import com.example.danceschool.model.Course;
 import com.example.danceschool.repository.CourseRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -57,7 +58,7 @@ public class LessonControllerTest extends BaseControllerTest {
     @Test
     void shouldCreateLessonSuccessfully() throws Exception {
 
-        LessonController.LessonRequest request = new LessonController.LessonRequest();
+        LessonRequest request = new LessonRequest();
         request.setCourseId(courseId);
         request.setStartTime(startTime);
         request.setEndTime(endTime);
@@ -75,7 +76,7 @@ public class LessonControllerTest extends BaseControllerTest {
 
     @Test
     void shouldReturn400WhenMissingData() throws Exception {
-        LessonController.LessonRequest request = new LessonController.LessonRequest(); // empty request
+        LessonRequest request = new LessonRequest(); // empty request
 
         mockMvc.perform(post("/api/lessons")
                         .header("Authorization", "Bearer " + authToken)

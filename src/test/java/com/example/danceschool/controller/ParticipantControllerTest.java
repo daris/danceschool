@@ -1,5 +1,6 @@
 package com.example.danceschool.controller;
 
+import com.example.danceschool.dto.ParticipantRequest;
 import com.example.danceschool.model.Course;
 import com.example.danceschool.model.User;
 import com.example.danceschool.repository.CourseRepository;
@@ -64,7 +65,7 @@ public class ParticipantControllerTest extends BaseControllerTest {
 
     @Test
     void shouldCreateParticipantSuccessfully() throws Exception {
-        ParticipantController.ParticipantRequest request = new ParticipantController.ParticipantRequest();
+        ParticipantRequest request = new ParticipantRequest();
         request.setUserId(userId);
         request.setCourseId(courseId);
 
@@ -81,7 +82,7 @@ public class ParticipantControllerTest extends BaseControllerTest {
 
     @Test
     void shouldReturn400WhenMissingData() throws Exception {
-        ParticipantController.ParticipantRequest request = new ParticipantController.ParticipantRequest(); // Missing userId & courseId
+        ParticipantRequest request = new ParticipantRequest(); // Missing userId & courseId
 
         mockMvc.perform(post("/api/participants")
                         .header("Authorization", "Bearer " + authToken)
