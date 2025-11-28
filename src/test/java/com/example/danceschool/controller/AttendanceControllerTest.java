@@ -49,7 +49,7 @@ class AttendanceControllerTest extends BaseControllerTest {
     }
 
     @Test
-    void shouldReturnAttendanceExcerpt() throws Exception {
+    void shouldReturnAttendance() throws Exception {
 
         Course course = new Course();
         course.setName("Course 1");
