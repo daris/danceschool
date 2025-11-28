@@ -3,6 +3,7 @@ package com.example.danceschool.config;
 import com.example.danceschool.model.User;
 import com.example.danceschool.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -13,6 +14,7 @@ import java.time.LocalDateTime;
 
 @Configuration
 @RequiredArgsConstructor
+@Log4j2
 public class AdminUserConfig {
 
     private final PasswordEncoder passwordEncoder;
@@ -42,12 +44,12 @@ public class AdminUserConfig {
                     admin.setCreatedAt(LocalDateTime.now());
 
                     userRepository.save(admin);
-                    System.out.println("Admin user created: " + adminUsername);
+                    log.info("Admin user created: {}", adminUsername);
                 } else {
-                    System.out.println("Admin user already exists: " + adminUsername);
+                    log.info("Admin user already exists: {}", adminUsername);
                 }
             } else {
-                System.out.println("No admin.username defined. Skipping admin creation.");
+                log.info("No admin.username defined. Skipping admin creation.");
             }
         };
     }
