@@ -1,6 +1,7 @@
 package com.example.danceschool.service;
 
 import com.example.danceschool.dto.*;
+import com.example.danceschool.dto.internal.SetAttendanceStatusDto;
 import com.example.danceschool.dto.request.QrCodeRequest;
 import com.example.danceschool.dto.response.QrCodeResponse;
 import com.example.danceschool.exception.UnknownQrCodeType;

@@ -3,7 +3,7 @@ package com.example.danceschool.service;
 import com.example.danceschool.dto.AttendanceDto;
 import com.example.danceschool.dto.websocket.CourseAttendanceUpdateMessage;
 import com.example.danceschool.dto.CourseDto;
-import com.example.danceschool.dto.SetAttendanceStatusDto;
+import com.example.danceschool.dto.internal.SetAttendanceStatusDto;
 import com.example.danceschool.exception.CourseNotFoundException;
 import com.example.danceschool.mapper.CourseMapper;
 import com.example.danceschool.model.AttendanceStatus;

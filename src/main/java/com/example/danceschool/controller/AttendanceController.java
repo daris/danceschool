@@ -2,7 +2,8 @@ package com.example.danceschool.controller;
 
 import com.example.danceschool.dto.AttendanceDto;
 import com.example.danceschool.dto.request.AttendanceStatusRequest;
-import com.example.danceschool.dto.SetAttendanceStatusDto;
+import com.example.danceschool.dto.internal.SetAttendanceStatusDto;
+import com.example.danceschool.mapper.AttendanceStatusMapper;
 import com.example.danceschool.service.CourseService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -17,15 +18,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/attendances")
 public class AttendanceController {
     private final CourseService courseService;
+    private final AttendanceStatusMapper attendanceMapper;
 
     @PostMapping("/set-status")
     public ResponseEntity<AttendanceDto> setStatus(@Valid @RequestBody AttendanceStatusRequest request) {
-        SetAttendanceStatusDto dto = new SetAttendanceStatusDto();
-        dto.setLessonId(request.getLessonId());
-        dto.setUserId(request.getUserId());
-        dto.setStatus(request.getStatus());
-        dto.setCreateParticipant(true);
-
+        SetAttendanceStatusDto dto = attendanceMapper.toSetStatusDto(request);
         AttendanceDto attendance = courseService.setAttendanceStatusForLesson(dto);
         return ResponseEntity.ok(attendance);
     }

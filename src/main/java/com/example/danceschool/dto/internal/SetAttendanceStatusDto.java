@@ -1,4 +1,4 @@
-package com.example.danceschool.dto;
+package com.example.danceschool.dto.internal;
 
 import com.example.danceschool.model.AttendanceStatus;
 import lombok.AllArgsConstructor;
