@@ -1,6 +1,6 @@
 package com.example.danceschool.exceptionhandler;
 
-import com.example.danceschool.dto.ErrorResponse;
+import com.example.danceschool.dto.response.ErrorResponse;
 import com.example.danceschool.exception.BadRequestException;
 import com.example.danceschool.exception.ResourceNotFoundException;
 import com.example.danceschool.exception.UnauthorizedException;

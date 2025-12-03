@@ -1,7 +1,7 @@
 package com.example.danceschool.controller;
 
 import com.example.danceschool.dto.ParticipantDto;
-import com.example.danceschool.dto.ParticipantRequest;
+import com.example.danceschool.dto.request.ParticipantRequest;
 import com.example.danceschool.service.ParticipantService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

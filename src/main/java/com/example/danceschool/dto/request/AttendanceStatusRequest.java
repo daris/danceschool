@@ -1,4 +1,4 @@
-package com.example.danceschool.dto;
+package com.example.danceschool.dto.request;
 
 import com.example.danceschool.model.AttendanceStatus;
 import jakarta.validation.constraints.NotNull;

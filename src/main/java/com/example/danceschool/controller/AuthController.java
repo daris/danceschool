@@ -1,8 +1,8 @@
 package com.example.danceschool.controller;
 
-import com.example.danceschool.dto.LoginRequest;
-import com.example.danceschool.dto.LoginResponse;
-import com.example.danceschool.dto.RegisterRequest;
+import com.example.danceschool.dto.request.LoginRequest;
+import com.example.danceschool.dto.response.LoginResponse;
+import com.example.danceschool.dto.request.RegisterRequest;
 import com.example.danceschool.service.AuthService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

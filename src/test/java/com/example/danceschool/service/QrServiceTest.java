@@ -1,13 +1,13 @@
 package com.example.danceschool.service;
 
 import com.example.danceschool.dto.*;
+import com.example.danceschool.dto.request.QrCodeRequest;
+import com.example.danceschool.dto.response.QrCodeResponse;
 import com.example.danceschool.exception.UnknownQrCodeType;
 import com.example.danceschool.model.AttendanceStatus;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.*;
-import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.UUID;
 

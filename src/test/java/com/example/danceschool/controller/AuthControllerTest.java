@@ -1,7 +1,7 @@
 package com.example.danceschool.controller;
 
-import com.example.danceschool.dto.LoginRequest;
-import com.example.danceschool.dto.RegisterRequest;
+import com.example.danceschool.dto.request.LoginRequest;
+import com.example.danceschool.dto.request.RegisterRequest;
 import com.example.danceschool.model.User;
 import com.example.danceschool.repository.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;

@@ -1,8 +1,8 @@
 package com.example.danceschool.service;
 
-import com.example.danceschool.dto.LoginRequest;
-import com.example.danceschool.dto.LoginResponse;
-import com.example.danceschool.dto.RegisterRequest;
+import com.example.danceschool.dto.request.LoginRequest;
+import com.example.danceschool.dto.response.LoginResponse;
+import com.example.danceschool.dto.request.RegisterRequest;
 import com.example.danceschool.event.UserEvent;
 import com.example.danceschool.exception.InvalidCredentialsException;
 import com.example.danceschool.jwt.JwtService;
@@ -14,12 +14,7 @@ import org.mockito.*;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
-import java.time.LocalDateTime;
-import java.util.Optional;
-import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;

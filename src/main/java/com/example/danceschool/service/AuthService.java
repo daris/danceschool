@@ -1,8 +1,8 @@
 package com.example.danceschool.service;
 
-import com.example.danceschool.dto.LoginRequest;
-import com.example.danceschool.dto.LoginResponse;
-import com.example.danceschool.dto.RegisterRequest;
+import com.example.danceschool.dto.request.LoginRequest;
+import com.example.danceschool.dto.response.LoginResponse;
+import com.example.danceschool.dto.request.RegisterRequest;
 import com.example.danceschool.event.UserEvent;
 import com.example.danceschool.exception.InvalidCredentialsException;
 import com.example.danceschool.jwt.JwtService;

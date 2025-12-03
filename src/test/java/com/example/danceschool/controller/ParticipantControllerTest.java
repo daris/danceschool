@@ -1,6 +1,6 @@
 package com.example.danceschool.controller;
 
-import com.example.danceschool.dto.ParticipantRequest;
+import com.example.danceschool.dto.request.ParticipantRequest;
 import com.example.danceschool.model.Course;
 import com.example.danceschool.model.User;
 import com.example.danceschool.repository.CourseRepository;

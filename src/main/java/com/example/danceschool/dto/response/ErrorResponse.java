@@ -1,4 +1,4 @@
-package com.example.danceschool.dto;
+package com.example.danceschool.dto.response;
 
 import lombok.Getter;
 import lombok.Setter;

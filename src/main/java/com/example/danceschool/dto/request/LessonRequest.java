@@ -1,4 +1,4 @@
-package com.example.danceschool.dto;
+package com.example.danceschool.dto.request;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;

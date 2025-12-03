@@ -1,7 +1,7 @@
 package com.example.danceschool.controller;
 
 import com.example.danceschool.dto.AttendanceDto;
-import com.example.danceschool.dto.AttendanceStatusRequest;
+import com.example.danceschool.dto.request.AttendanceStatusRequest;
 import com.example.danceschool.dto.SetAttendanceStatusDto;
 import com.example.danceschool.service.CourseService;
 import jakarta.validation.Valid;

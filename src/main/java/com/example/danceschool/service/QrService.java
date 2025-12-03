@@ -1,6 +1,8 @@
 package com.example.danceschool.service;
 
 import com.example.danceschool.dto.*;
+import com.example.danceschool.dto.request.QrCodeRequest;
+import com.example.danceschool.dto.response.QrCodeResponse;
 import com.example.danceschool.exception.UnknownQrCodeType;
 import com.example.danceschool.model.AttendanceStatus;
 import lombok.RequiredArgsConstructor;

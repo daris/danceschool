@@ -1,6 +1,6 @@
 package com.example.danceschool.controller;
 
-import com.example.danceschool.dto.LessonRequest;
+import com.example.danceschool.dto.request.LessonRequest;
 import com.example.danceschool.dto.LessonDto;
 import com.example.danceschool.service.LessonService;
 import jakarta.validation.Valid;

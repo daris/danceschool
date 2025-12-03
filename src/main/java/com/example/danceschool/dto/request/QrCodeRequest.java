@@ -1,5 +1,6 @@
-package com.example.danceschool.dto;
+package com.example.danceschool.dto.request;
 
+import com.example.danceschool.dto.QrCodeType;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
