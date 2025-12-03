@@ -1,15 +1,12 @@
 package com.example.danceschool.service;
 
 import com.example.danceschool.dto.AttendanceDto;
-import com.example.danceschool.dto.CourseAttendancesUpdateDto;
+import com.example.danceschool.dto.websocket.CourseAttendanceUpdateMessage;
 import com.example.danceschool.dto.CourseDto;
 import com.example.danceschool.dto.SetAttendanceStatusDto;
 import com.example.danceschool.exception.CourseNotFoundException;
-import com.example.danceschool.mapper.AttendanceMapper;
 import com.example.danceschool.mapper.CourseMapper;
-import com.example.danceschool.model.Attendance;
 import com.example.danceschool.model.Course;
-import com.example.danceschool.model.Lesson;
 import com.example.danceschool.repository.CourseRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
@@ -64,13 +61,13 @@ public class CourseService {
 
         AttendanceDto attendance = attendanceService.setAttendanceStatusForLesson(dto.getLessonId(), dto.getUserId(), dto.getStatus());
 
-        CourseAttendancesUpdateDto updateDto = new CourseAttendancesUpdateDto(course.getId(), attendance.getId(), dto.getLessonId(), dto.getUserId(), dto.getStatus());
+        CourseAttendanceUpdateMessage updateDto = new CourseAttendanceUpdateMessage(course.getId(), attendance.getId(), dto.getLessonId(), dto.getUserId(), dto.getStatus());
         notifyCourseAttendancesChanged(updateDto);
 
         return attendance;
     }
 
-    private void notifyCourseAttendancesChanged(CourseAttendancesUpdateDto dto) {
+    private void notifyCourseAttendancesChanged(CourseAttendanceUpdateMessage dto) {
         String topic = "/topic/courses/" + dto.getCourseId() + "/attendances";
         messagingTemplate.convertAndSend(topic, dto);
     }

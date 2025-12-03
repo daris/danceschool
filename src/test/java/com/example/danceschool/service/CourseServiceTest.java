@@ -1,7 +1,7 @@
 package com.example.danceschool.service;
 
 import com.example.danceschool.dto.AttendanceDto;
-import com.example.danceschool.dto.CourseAttendancesUpdateDto;
+import com.example.danceschool.dto.websocket.CourseAttendanceUpdateMessage;
 import com.example.danceschool.dto.CourseDto;
 import com.example.danceschool.dto.SetAttendanceStatusDto;
 import com.example.danceschool.exception.CourseNotFoundException;
@@ -140,7 +140,7 @@ class CourseServiceTest {
         verify(participantService).createParticipantForCourseIfNotAlready(courseId, userId);
         verify(attendanceService).setAttendanceStatusForLesson(lessonId, userId, dto.getStatus());
 
-        ArgumentCaptor<CourseAttendancesUpdateDto> captor = ArgumentCaptor.forClass(CourseAttendancesUpdateDto.class);
+        ArgumentCaptor<CourseAttendanceUpdateMessage> captor = ArgumentCaptor.forClass(CourseAttendanceUpdateMessage.class);
         verify(messagingTemplate).convertAndSend(eq("/topic/courses/" + courseId + "/attendances"), captor.capture());
 
         assertEquals(attendanceDto.getId(), captor.getValue().getAttendanceId());

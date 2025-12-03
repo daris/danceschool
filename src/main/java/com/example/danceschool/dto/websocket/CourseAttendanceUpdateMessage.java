@@ -1,4 +1,4 @@
-package com.example.danceschool.dto;
+package com.example.danceschool.dto.websocket;
 
 import com.example.danceschool.model.AttendanceStatus;
 import lombok.AllArgsConstructor;
@@ -8,7 +8,7 @@ import java.util.UUID;
 
 @Data
 @AllArgsConstructor
-public class CourseAttendancesUpdateDto {
+public class CourseAttendanceUpdateMessage {
     UUID courseId;
     UUID attendanceId;
     UUID lessonId;
