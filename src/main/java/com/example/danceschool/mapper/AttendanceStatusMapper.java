@@ -1,6 +1,5 @@
 package com.example.danceschool.mapper;
 
-import com.example.danceschool.dto.AttendanceDto;
 import com.example.danceschool.dto.internal.SetAttendanceStatusDto;
 import com.example.danceschool.dto.request.AttendanceStatusRequest;
 import org.mapstruct.Mapper;
@@ -11,6 +10,4 @@ public interface AttendanceStatusMapper {
 
     @Mapping(target = "createParticipant", constant = "true")
     SetAttendanceStatusDto toSetStatusDto(AttendanceStatusRequest request);
-
-    AttendanceDto toResponse(AttendanceDto dto);
 }
