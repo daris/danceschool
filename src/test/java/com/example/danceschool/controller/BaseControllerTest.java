@@ -9,6 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
+import org.springframework.security.authentication.TestingAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+
+import java.util.UUID;
 
 public abstract class BaseControllerTest {
 
@@ -40,15 +44,10 @@ public abstract class BaseControllerTest {
         User user = new User();
         user.setUsername("jan");
         user.setEmail("jan@example.com");
+        user.setRole("USER");
         userRepository.save(user);
 
-        // Mock UserDetailsService
-        var userDetails = org.springframework.security.core.userdetails.User
-                .withUsername("jan")
-                .password("{noop}pass")
-                .roles("USER")
-                .build();
-        Mockito.when(userDetailsService.loadUserByUsername("jan")).thenReturn(userDetails);
+        Mockito.when(userDetailsService.loadUserByUsername("jan")).thenReturn(user);
     }
 
     void setUpCurrentUserAdmin() {
@@ -63,12 +62,6 @@ public abstract class BaseControllerTest {
         user.setRole("ADMIN");
         userRepository.save(user);
 
-        // Mock UserDetailsService
-        var userDetails = org.springframework.security.core.userdetails.User
-                .withUsername("jan")
-                .password("{noop}pass")
-                .roles("ADMIN")
-                .build();
-        Mockito.when(userDetailsService.loadUserByUsername("jan")).thenReturn(userDetails);
+        Mockito.when(userDetailsService.loadUserByUsername("jan")).thenReturn(user);
     }
 }
