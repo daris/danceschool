@@ -1,7 +1,6 @@
-package com.example.danceschool.controller;
+package com.example.danceschool.qr;
 
-import com.example.danceschool.dto.request.QrCodeRequest;
-import com.example.danceschool.dto.QrCodeType;
+import com.example.danceschool.controller.BaseControllerTest;
 import com.example.danceschool.course.Course;
 import com.example.danceschool.lesson.Lesson;
 import com.example.danceschool.course.CourseRepository;

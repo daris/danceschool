@@ -1,10 +1,7 @@
-package com.example.danceschool.controller;
+package com.example.danceschool.qr;
 
-import com.example.danceschool.dto.request.QrCodeRequest;
 import com.example.danceschool.dto.response.ErrorResponse;
-import com.example.danceschool.dto.response.QrCodeResponse;
 import com.example.danceschool.user.User;
-import com.example.danceschool.service.QrService;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
