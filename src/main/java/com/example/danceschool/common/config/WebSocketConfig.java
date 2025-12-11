@@ -1,4 +1,4 @@
-package com.example.danceschool.config;
+package com.example.danceschool.common.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;

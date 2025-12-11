@@ -1,4 +1,4 @@
-package com.example.danceschool.exception;
+package com.example.danceschool.common.exception;
 
 public class ResourceNotFoundException extends RuntimeException {
     public ResourceNotFoundException(String message) {

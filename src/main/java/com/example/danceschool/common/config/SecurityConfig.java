@@ -1,4 +1,4 @@
-package com.example.danceschool.config;
+package com.example.danceschool.common.config;
 
 import com.example.danceschool.jwt.JwtAuthFilter;
 import jakarta.servlet.http.HttpServletResponse;

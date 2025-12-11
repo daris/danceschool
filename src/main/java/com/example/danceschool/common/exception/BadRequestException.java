@@ -1,4 +1,4 @@
-package com.example.danceschool.exception;
+package com.example.danceschool.common.exception;
 
 public class BadRequestException extends RuntimeException {
     public BadRequestException(String message) {

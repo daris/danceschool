@@ -1,6 +1,6 @@
 package com.example.danceschool.qr;
 
-import com.example.danceschool.exception.BadRequestException;
+import com.example.danceschool.common.exception.BadRequestException;
 
 public class UnknownQrCodeType extends BadRequestException {
     public UnknownQrCodeType(String message) {

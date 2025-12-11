@@ -2,7 +2,7 @@ package com.example.danceschool.course;
 
 import com.example.danceschool.attendance.Attendance;
 import com.example.danceschool.attendance.AttendanceStatus;
-import com.example.danceschool.controller.BaseControllerTest;
+import com.example.danceschool.common.BaseControllerTest;
 import com.example.danceschool.lesson.Lesson;
 import com.example.danceschool.lesson.LessonRepository;
 import com.example.danceschool.participant.Participant;

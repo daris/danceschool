@@ -1,6 +1,7 @@
-package com.example.danceschool.service;
+package com.example.danceschool.common.service;
 
 import com.example.danceschool.auth.UserEvent;
+import com.example.danceschool.common.service.KafkaProducer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

@@ -1,4 +1,4 @@
-package com.example.danceschool.controller;
+package com.example.danceschool.common;
 
 import com.example.danceschool.jwt.JwtService;
 import com.example.danceschool.user.User;

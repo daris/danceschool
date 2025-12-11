@@ -1,9 +1,9 @@
-package com.example.danceschool.exceptionhandler;
+package com.example.danceschool.common.exceptionhandler;
 
-import com.example.danceschool.dto.response.ErrorResponse;
-import com.example.danceschool.exception.BadRequestException;
-import com.example.danceschool.exception.ResourceNotFoundException;
-import com.example.danceschool.exception.UnauthorizedException;
+import com.example.danceschool.common.response.ErrorResponse;
+import com.example.danceschool.common.exception.BadRequestException;
+import com.example.danceschool.common.exception.ResourceNotFoundException;
+import com.example.danceschool.common.exception.UnauthorizedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;

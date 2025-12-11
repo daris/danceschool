@@ -1,6 +1,6 @@
 package com.example.danceschool.qr;
 
-import com.example.danceschool.dto.response.ErrorResponse;
+import com.example.danceschool.common.response.ErrorResponse;
 import com.example.danceschool.user.User;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;

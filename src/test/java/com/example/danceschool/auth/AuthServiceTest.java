@@ -2,7 +2,7 @@ package com.example.danceschool.auth;
 
 import com.example.danceschool.jwt.JwtService;
 import com.example.danceschool.user.CustomUserDetailsService;
-import com.example.danceschool.service.KafkaProducer;
+import com.example.danceschool.common.service.KafkaProducer;
 import com.example.danceschool.user.User;
 import com.example.danceschool.user.UserRepository;
 import org.junit.jupiter.api.BeforeEach;

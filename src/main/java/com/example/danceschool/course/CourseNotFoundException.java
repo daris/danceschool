@@ -1,6 +1,6 @@
 package com.example.danceschool.course;
 
-import com.example.danceschool.exception.ResourceNotFoundException;
+import com.example.danceschool.common.exception.ResourceNotFoundException;
 
 public class CourseNotFoundException extends ResourceNotFoundException {
     public CourseNotFoundException(String message) {

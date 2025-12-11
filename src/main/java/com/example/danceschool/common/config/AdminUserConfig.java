@@ -1,4 +1,4 @@
-package com.example.danceschool.config;
+package com.example.danceschool.common.config;
 
 import com.example.danceschool.user.User;
 import com.example.danceschool.user.UserRepository;

@@ -1,6 +1,6 @@
 package com.example.danceschool.user;
 
-import com.example.danceschool.controller.BaseControllerTest;
+import com.example.danceschool.common.BaseControllerTest;
 import com.example.danceschool.course.Course;
 import com.example.danceschool.userpass.UserPass;
 import com.example.danceschool.course.CourseRepository;

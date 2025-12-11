@@ -1,6 +1,6 @@
 package com.example.danceschool.lesson;
 
-import com.example.danceschool.controller.BaseControllerTest;
+import com.example.danceschool.common.BaseControllerTest;
 import com.example.danceschool.course.Course;
 import com.example.danceschool.course.CourseRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;

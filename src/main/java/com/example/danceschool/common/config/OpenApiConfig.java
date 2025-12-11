@@ -1,4 +1,4 @@
-package com.example.danceschool.config;
+package com.example.danceschool.common.config;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;

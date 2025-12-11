@@ -1,6 +1,6 @@
 package com.example.danceschool.qr;
 
-import com.example.danceschool.controller.BaseControllerTest;
+import com.example.danceschool.common.BaseControllerTest;
 import com.example.danceschool.course.Course;
 import com.example.danceschool.lesson.Lesson;
 import com.example.danceschool.course.CourseRepository;
