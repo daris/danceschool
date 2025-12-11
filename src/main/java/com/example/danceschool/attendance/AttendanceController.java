@@ -3,7 +3,7 @@ package com.example.danceschool.attendance;
 import com.example.danceschool.dto.AttendanceDto;
 import com.example.danceschool.dto.request.AttendanceStatusRequest;
 import com.example.danceschool.dto.internal.SetAttendanceStatusDto;
-import com.example.danceschool.service.CourseService;
+import com.example.danceschool.course.CourseService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

@@ -1,8 +1,5 @@
-package com.example.danceschool.controller;
+package com.example.danceschool.course;
 
-import com.example.danceschool.dto.CourseDto;
-import com.example.danceschool.dto.request.CourseRequest;
-import com.example.danceschool.service.CourseService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

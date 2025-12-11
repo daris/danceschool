@@ -1,15 +1,12 @@
-package com.example.danceschool.service;
+package com.example.danceschool.course;
 
 import com.example.danceschool.attendance.AttendanceService;
 import com.example.danceschool.dto.AttendanceDto;
 import com.example.danceschool.dto.websocket.CourseAttendanceUpdateMessage;
-import com.example.danceschool.dto.CourseDto;
 import com.example.danceschool.dto.internal.SetAttendanceStatusDto;
 import com.example.danceschool.exception.CourseNotFoundException;
-import com.example.danceschool.mapper.CourseMapper;
 import com.example.danceschool.model.AttendanceStatus;
-import com.example.danceschool.model.Course;
-import com.example.danceschool.repository.CourseRepository;
+import com.example.danceschool.service.ParticipantService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.*;

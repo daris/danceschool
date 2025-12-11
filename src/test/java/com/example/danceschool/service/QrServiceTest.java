@@ -1,5 +1,7 @@
 package com.example.danceschool.service;
 
+import com.example.danceschool.course.CourseDto;
+import com.example.danceschool.course.CourseService;
 import com.example.danceschool.dto.*;
 import com.example.danceschool.dto.internal.SetAttendanceStatusDto;
 import com.example.danceschool.dto.request.QrCodeRequest;

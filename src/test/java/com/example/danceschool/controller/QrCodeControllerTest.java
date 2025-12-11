@@ -2,9 +2,9 @@ package com.example.danceschool.controller;
 
 import com.example.danceschool.dto.request.QrCodeRequest;
 import com.example.danceschool.dto.QrCodeType;
-import com.example.danceschool.model.Course;
+import com.example.danceschool.course.Course;
 import com.example.danceschool.model.Lesson;
-import com.example.danceschool.repository.CourseRepository;
+import com.example.danceschool.course.CourseRepository;
 import com.example.danceschool.repository.LessonRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;

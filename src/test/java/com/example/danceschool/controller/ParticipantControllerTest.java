@@ -1,9 +1,9 @@
 package com.example.danceschool.controller;
 
 import com.example.danceschool.dto.request.ParticipantRequest;
-import com.example.danceschool.model.Course;
+import com.example.danceschool.course.Course;
 import com.example.danceschool.user.User;
-import com.example.danceschool.repository.CourseRepository;
+import com.example.danceschool.course.CourseRepository;
 import com.example.danceschool.user.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.transaction.Transactional;

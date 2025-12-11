@@ -1,9 +1,6 @@
-package com.example.danceschool.mapper;
+package com.example.danceschool.course;
 
-import com.example.danceschool.dto.CourseDto;
-import com.example.danceschool.model.Course;
 import com.example.danceschool.model.Lesson;
-import com.example.danceschool.model.Participant;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,8 +1,7 @@
-package com.example.danceschool.controller;
+package com.example.danceschool.course;
 
-import com.example.danceschool.dto.request.CourseRequest;
+import com.example.danceschool.controller.BaseControllerTest;
 import com.example.danceschool.model.*;
-import com.example.danceschool.repository.CourseRepository;
 import com.example.danceschool.repository.LessonRepository;
 import com.example.danceschool.user.User;
 import com.example.danceschool.user.UserRepository;

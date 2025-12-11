@@ -1,9 +1,9 @@
 package com.example.danceschool.user;
 
 import com.example.danceschool.controller.BaseControllerTest;
-import com.example.danceschool.model.Course;
+import com.example.danceschool.course.Course;
 import com.example.danceschool.model.UserPass;
-import com.example.danceschool.repository.CourseRepository;
+import com.example.danceschool.course.CourseRepository;
 import com.example.danceschool.repository.UserPassRepository;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.BeforeEach;

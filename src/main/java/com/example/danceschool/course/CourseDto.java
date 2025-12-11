@@ -1,5 +1,7 @@
-package com.example.danceschool.dto;
+package com.example.danceschool.course;
 
+import com.example.danceschool.dto.LessonDto;
+import com.example.danceschool.dto.ParticipantDto;
 import lombok.Data;
 
 import java.util.List;

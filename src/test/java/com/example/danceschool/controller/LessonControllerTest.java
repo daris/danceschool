@@ -1,8 +1,8 @@
 package com.example.danceschool.controller;
 
 import com.example.danceschool.dto.request.LessonRequest;
-import com.example.danceschool.model.Course;
-import com.example.danceschool.repository.CourseRepository;
+import com.example.danceschool.course.Course;
+import com.example.danceschool.course.CourseRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.BeforeEach;

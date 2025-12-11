@@ -1,5 +1,6 @@
 package com.example.danceschool.model;
 
+import com.example.danceschool.course.Course;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;

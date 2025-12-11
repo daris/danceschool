@@ -1,6 +1,5 @@
-package com.example.danceschool.repository;
+package com.example.danceschool.course;
 
-import com.example.danceschool.model.Course;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

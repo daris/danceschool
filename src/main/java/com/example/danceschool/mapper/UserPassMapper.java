@@ -1,5 +1,6 @@
 package com.example.danceschool.mapper;
 
+import com.example.danceschool.course.Course;
 import com.example.danceschool.dto.UserPassDto;
 import com.example.danceschool.model.UserPass;
 import org.mapstruct.Mapper;
@@ -19,7 +20,7 @@ public interface UserPassMapper {
     UserPassDto toDto(UserPass userPass);
 
     @Named("mapCourseIds")
-    default List<java.util.UUID> mapCourseIds(List<com.example.danceschool.model.Course> courses) {
-        return courses.stream().map(com.example.danceschool.model.Course::getId).collect(Collectors.toList());
+    default List<java.util.UUID> mapCourseIds(List<Course> courses) {
+        return courses.stream().map(Course::getId).collect(Collectors.toList());
     }
 }
