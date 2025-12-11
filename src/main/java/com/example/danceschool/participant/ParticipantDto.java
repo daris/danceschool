@@ -1,4 +1,4 @@
-package com.example.danceschool.dto;
+package com.example.danceschool.participant;
 
 import lombok.Data;
 

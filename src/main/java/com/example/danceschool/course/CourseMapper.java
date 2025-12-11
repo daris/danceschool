@@ -1,7 +1,7 @@
 package com.example.danceschool.course;
 
 import com.example.danceschool.lesson.LessonMapper;
-import com.example.danceschool.mapper.ParticipantMapper;
+import com.example.danceschool.participant.ParticipantMapper;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring", uses = { LessonMapper.class, ParticipantMapper.class })

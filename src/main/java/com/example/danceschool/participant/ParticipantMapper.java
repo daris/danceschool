@@ -1,7 +1,5 @@
-package com.example.danceschool.mapper;
+package com.example.danceschool.participant;
 
-import com.example.danceschool.dto.ParticipantDto;
-import com.example.danceschool.model.Participant;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

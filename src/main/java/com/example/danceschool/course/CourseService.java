@@ -5,7 +5,7 @@ import com.example.danceschool.attendance.AttendanceDto;
 import com.example.danceschool.dto.websocket.CourseAttendanceUpdateMessage;
 import com.example.danceschool.attendance.SetAttendanceStatusDto;
 import com.example.danceschool.exception.CourseNotFoundException;
-import com.example.danceschool.service.ParticipantService;
+import com.example.danceschool.participant.ParticipantService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;

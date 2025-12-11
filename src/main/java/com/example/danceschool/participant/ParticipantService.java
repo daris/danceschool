@@ -1,14 +1,10 @@
-package com.example.danceschool.service;
+package com.example.danceschool.participant;
 
-import com.example.danceschool.dto.ParticipantDto;
 import com.example.danceschool.exception.CourseNotFoundException;
 import com.example.danceschool.exception.UserNotFoundException;
-import com.example.danceschool.mapper.ParticipantMapper;
 import com.example.danceschool.course.Course;
-import com.example.danceschool.model.Participant;
 import com.example.danceschool.user.User;
 import com.example.danceschool.course.CourseRepository;
-import com.example.danceschool.repository.ParticipantRepository;
 import com.example.danceschool.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

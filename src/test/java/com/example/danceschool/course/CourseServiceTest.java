@@ -6,7 +6,7 @@ import com.example.danceschool.dto.websocket.CourseAttendanceUpdateMessage;
 import com.example.danceschool.attendance.SetAttendanceStatusDto;
 import com.example.danceschool.exception.CourseNotFoundException;
 import com.example.danceschool.attendance.AttendanceStatus;
-import com.example.danceschool.service.ParticipantService;
+import com.example.danceschool.participant.ParticipantService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.*;
