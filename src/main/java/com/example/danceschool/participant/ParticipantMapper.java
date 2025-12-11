@@ -1,16 +1,21 @@
 package com.example.danceschool.participant;
 
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
-@Mapper(componentModel = "spring")
-public interface ParticipantMapper {
+@Component
+public class ParticipantMapper {
 
-    @Mapping(target = "userId", source = "user.id")
-    @Mapping(target = "courseId", source = "course.id")
-    ParticipantDto toDto(Participant participant);
+    public ParticipantDto toDto(Participant participant) {
+        if (participant == null) return null;
 
-    List<ParticipantDto> toDtoList(List<Participant> participants);
+        ParticipantDto dto = new ParticipantDto();
+        dto.setId(participant.getId());
+        dto.setUserId(participant.getUser() != null ? participant.getUser().getId() : null);
+        dto.setCourseId(participant.getCourse() != null ? participant.getCourse().getId() : null);
+
+        return dto;
+    }
 }

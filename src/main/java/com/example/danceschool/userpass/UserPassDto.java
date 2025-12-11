@@ -8,10 +8,9 @@ import java.util.UUID;
 
 @Data
 public class UserPassDto {
-
     private UUID id;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
-    private List<UUID> courseIds; // map only course IDs
+    private List<UUID> courseIds;
     private LocalDateTime createdAt;
 }

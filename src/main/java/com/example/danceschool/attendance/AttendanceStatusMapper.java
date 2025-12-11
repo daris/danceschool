@@ -1,11 +1,19 @@
 package com.example.danceschool.attendance;
 
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
+import org.springframework.stereotype.Component;
 
-@Mapper(componentModel = "spring")
-public interface AttendanceStatusMapper {
+@Component
+public class AttendanceStatusMapper {
 
-    @Mapping(target = "createParticipant", constant = "true")
-    SetAttendanceStatusDto toSetStatusDto(AttendanceStatusRequest request);
+    public SetAttendanceStatusDto toDto(AttendanceStatusRequest request) {
+        if (request == null) return null;
+
+        SetAttendanceStatusDto dto = new SetAttendanceStatusDto();
+        dto.setLessonId(request.getLessonId());
+        dto.setUserId(request.getUserId());
+        dto.setStatus(request.getStatus() != null ? request.getStatus() : AttendanceStatus.NORMAL);
+        dto.setCreateParticipant(true);
+
+        return dto;
+    }
 }

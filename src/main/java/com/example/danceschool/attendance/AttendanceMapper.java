@@ -1,11 +1,19 @@
 package com.example.danceschool.attendance;
 
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
+import org.springframework.stereotype.Component;
 
-@Mapper(componentModel = "spring")
-public interface AttendanceMapper {
-    @Mapping(target = "lessonId", source = "lesson.id")
-    @Mapping(target = "userId", source = "user.id")
-    AttendanceDto toDto(Attendance attendance);
+@Component
+public class AttendanceMapper {
+
+    public AttendanceDto toDto(Attendance attendance) {
+        if (attendance == null) return null;
+
+        AttendanceDto dto = new AttendanceDto();
+        dto.setId(attendance.getId());
+        dto.setLessonId(attendance.getLesson() != null ? attendance.getLesson().getId() : null);
+        dto.setUserId(attendance.getUser() != null ? attendance.getUser().getId() : null);
+        dto.setStatus(attendance.getStatus());
+
+        return dto;
+    }
 }

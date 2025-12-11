@@ -24,7 +24,7 @@ class AttendanceStatusMapperSpringTest {
         request.setUserId(userId);
         request.setStatus(AttendanceStatus.NORMAL);
 
-        SetAttendanceStatusDto dto = mapper.toSetStatusDto(request);
+        SetAttendanceStatusDto dto = mapper.toDto(request);
 
         assertThat(dto.getLessonId()).isEqualTo(lessonId);
         assertThat(dto.getUserId()).isEqualTo(userId);

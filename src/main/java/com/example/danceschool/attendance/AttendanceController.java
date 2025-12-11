@@ -18,7 +18,7 @@ public class AttendanceController {
 
     @PostMapping("/set-status")
     public ResponseEntity<AttendanceDto> setStatus(@Valid @RequestBody AttendanceStatusRequest request) {
-        SetAttendanceStatusDto dto = attendanceMapper.toSetStatusDto(request);
+        SetAttendanceStatusDto dto = attendanceMapper.toDto(request);
         AttendanceDto attendance = courseService.setAttendanceStatusForLesson(dto);
         return ResponseEntity.ok(attendance);
     }

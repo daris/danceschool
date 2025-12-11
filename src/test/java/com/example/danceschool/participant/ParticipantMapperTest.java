@@ -49,38 +49,4 @@ class ParticipantMapperTest {
     void toDto_returnsNull_whenInputNull() {
         assertThat(mapper.toDto(null)).isNull();
     }
-
-    @Test
-    void toDtoList_mapsListCorrectly() {
-        // given
-        Participant p1 = new Participant();
-        p1.setId(UUID.randomUUID());
-        User u1 = new User(); u1.setId(UUID.randomUUID());
-        Course c1 = new Course(); c1.setId(UUID.randomUUID());
-        p1.setUser(u1);
-        p1.setCourse(c1);
-
-        Participant p2 = new Participant();
-        p2.setId(UUID.randomUUID());
-        User u2 = new User(); u2.setId(UUID.randomUUID());
-        Course c2 = new Course(); c2.setId(UUID.randomUUID());
-        p2.setUser(u2);
-        p2.setCourse(c2);
-
-        List<Participant> list = List.of(p1, p2);
-
-        // when
-        List<ParticipantDto> dtos = mapper.toDtoList(list);
-
-        // then
-        assertThat(dtos).hasSize(2);
-        assertThat(dtos)
-                .extracting(ParticipantDto::getId)
-                .containsExactly(p1.getId(), p2.getId());
-    }
-
-    @Test
-    void toDtoList_returnsNull_whenInputNull() {
-        assertThat(mapper.toDtoList(null)).isNull();
-    }
 }

@@ -1,24 +1,31 @@
 package com.example.danceschool.userpass;
 
 import com.example.danceschool.course.Course;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Named;
-import org.mapstruct.factory.Mappers;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
-@Mapper(componentModel = "spring")
-public interface UserPassMapper {
+@Component
+public class UserPassMapper {
 
-    UserPassMapper INSTANCE = Mappers.getMapper(UserPassMapper.class);
+    public UserPassDto toDto(UserPass userPass) {
+        UserPassDto dto = new UserPassDto();
+        dto.setId(userPass.getId());
+        dto.setStartTime(userPass.getStartTime());
+        dto.setEndTime(userPass.getEndTime());
+        dto.setCreatedAt(userPass.getCreatedAt());
 
-    @Mapping(target = "courseIds", source = "courses", qualifiedByName = "mapCourseIds")
-    UserPassDto toDto(UserPass userPass);
+        if (userPass.getCourses() != null) {
+            List<UUID> courseIds = userPass.getCourses()
+                    .stream()
+                    .map(Course::getId)
+                    .collect(Collectors.toList());
+            dto.setCourseIds(courseIds);
+        }
 
-    @Named("mapCourseIds")
-    default List<java.util.UUID> mapCourseIds(List<Course> courses) {
-        return courses.stream().map(Course::getId).collect(Collectors.toList());
+        return dto;
     }
+
 }
