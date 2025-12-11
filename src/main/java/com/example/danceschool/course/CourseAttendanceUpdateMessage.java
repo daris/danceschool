@@ -1,4 +1,4 @@
-package com.example.danceschool.dto.websocket;
+package com.example.danceschool.course;
 
 import com.example.danceschool.attendance.AttendanceStatus;
 import lombok.AllArgsConstructor;

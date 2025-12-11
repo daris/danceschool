@@ -2,7 +2,6 @@ package com.example.danceschool.course;
 
 import com.example.danceschool.attendance.AttendanceService;
 import com.example.danceschool.attendance.AttendanceDto;
-import com.example.danceschool.dto.websocket.CourseAttendanceUpdateMessage;
 import com.example.danceschool.attendance.SetAttendanceStatusDto;
 import com.example.danceschool.exception.CourseNotFoundException;
 import com.example.danceschool.participant.ParticipantService;

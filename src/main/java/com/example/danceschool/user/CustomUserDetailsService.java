@@ -1,6 +1,5 @@
-package com.example.danceschool.service;
+package com.example.danceschool.user;
 
-import com.example.danceschool.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

@@ -1,9 +1,8 @@
 package com.example.danceschool.auth;
 
-import com.example.danceschool.event.UserEvent;
 import com.example.danceschool.exception.InvalidCredentialsException;
 import com.example.danceschool.jwt.JwtService;
-import com.example.danceschool.service.CustomUserDetailsService;
+import com.example.danceschool.user.CustomUserDetailsService;
 import com.example.danceschool.service.KafkaProducer;
 import com.example.danceschool.user.User;
 import com.example.danceschool.user.UserRepository;

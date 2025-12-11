@@ -1,4 +1,4 @@
-package com.example.danceschool.event;
+package com.example.danceschool.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

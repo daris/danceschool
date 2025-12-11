@@ -1,6 +1,6 @@
 package com.example.danceschool.service;
 
-import com.example.danceschool.event.UserEvent;
+import com.example.danceschool.auth.UserEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
