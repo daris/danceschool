@@ -1,6 +1,6 @@
-package com.example.danceschool.common.config;
+package com.example.danceschool.security.config;
 
-import com.example.danceschool.jwt.JwtAuthFilter;
+import com.example.danceschool.security.jwt.JwtAuthFilter;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,4 +1,4 @@
-package com.example.danceschool.jwt;
+package com.example.danceschool.security.jwt;
 
 import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.FilterChain;

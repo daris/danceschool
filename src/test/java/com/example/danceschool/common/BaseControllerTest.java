@@ -1,6 +1,6 @@
 package com.example.danceschool.common;
 
-import com.example.danceschool.jwt.JwtService;
+import com.example.danceschool.security.jwt.JwtService;
 import com.example.danceschool.user.User;
 import com.example.danceschool.user.UserRepository;
 import com.example.danceschool.user.CustomUserDetailsService;
