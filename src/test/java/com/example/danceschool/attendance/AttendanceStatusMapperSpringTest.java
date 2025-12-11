@@ -1,4 +1,4 @@
-package com.example.danceschool.mapper;
+package com.example.danceschool.attendance;
 
 import com.example.danceschool.dto.internal.SetAttendanceStatusDto;
 import com.example.danceschool.dto.request.AttendanceStatusRequest;

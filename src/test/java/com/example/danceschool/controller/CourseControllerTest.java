@@ -7,7 +7,7 @@ import com.example.danceschool.repository.LessonRepository;
 import com.example.danceschool.user.User;
 import com.example.danceschool.user.UserRepository;
 import com.example.danceschool.repository.ParticipantRepository;
-import com.example.danceschool.repository.AttendanceRepository;
+import com.example.danceschool.attendance.AttendanceRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.BeforeEach;

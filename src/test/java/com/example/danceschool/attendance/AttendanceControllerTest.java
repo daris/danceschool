@@ -1,5 +1,6 @@
-package com.example.danceschool.controller;
+package com.example.danceschool.attendance;
 
+import com.example.danceschool.controller.BaseControllerTest;
 import com.example.danceschool.dto.request.AttendanceStatusRequest;
 import com.example.danceschool.model.AttendanceStatus;
 import com.example.danceschool.model.Course;

@@ -1,5 +1,6 @@
 package com.example.danceschool.service;
 
+import com.example.danceschool.attendance.AttendanceService;
 import com.example.danceschool.dto.AttendanceDto;
 import com.example.danceschool.dto.websocket.CourseAttendanceUpdateMessage;
 import com.example.danceschool.dto.CourseDto;

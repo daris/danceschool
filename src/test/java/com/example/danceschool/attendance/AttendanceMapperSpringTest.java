@@ -1,4 +1,4 @@
-package com.example.danceschool.mapper;
+package com.example.danceschool.attendance;
 
 import com.example.danceschool.dto.AttendanceDto;
 import com.example.danceschool.model.Attendance;

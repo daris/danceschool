@@ -1,12 +1,10 @@
-package com.example.danceschool.service;
+package com.example.danceschool.attendance;
 
 import com.example.danceschool.dto.AttendanceDto;
-import com.example.danceschool.mapper.AttendanceMapper;
 import com.example.danceschool.model.Attendance;
 import com.example.danceschool.model.AttendanceStatus;
 import com.example.danceschool.model.Lesson;
 import com.example.danceschool.user.User;
-import com.example.danceschool.repository.AttendanceRepository;
 import com.example.danceschool.repository.LessonRepository;
 import com.example.danceschool.user.UserRepository;
 import lombok.RequiredArgsConstructor;

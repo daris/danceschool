@@ -1,9 +1,8 @@
-package com.example.danceschool.controller;
+package com.example.danceschool.attendance;
 
 import com.example.danceschool.dto.AttendanceDto;
 import com.example.danceschool.dto.request.AttendanceStatusRequest;
 import com.example.danceschool.dto.internal.SetAttendanceStatusDto;
-import com.example.danceschool.mapper.AttendanceStatusMapper;
 import com.example.danceschool.service.CourseService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
