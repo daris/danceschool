@@ -1,8 +1,6 @@
-package com.example.danceschool.mapper;
+package com.example.danceschool.userpass;
 
 import com.example.danceschool.course.Course;
-import com.example.danceschool.dto.UserPassDto;
-import com.example.danceschool.model.UserPass;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;

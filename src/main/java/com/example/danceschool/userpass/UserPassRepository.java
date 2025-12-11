@@ -1,6 +1,5 @@
-package com.example.danceschool.repository;
+package com.example.danceschool.userpass;
 
-import com.example.danceschool.model.UserPass;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

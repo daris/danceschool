@@ -1,6 +1,6 @@
 package com.example.danceschool.user;
 
-import com.example.danceschool.dto.UserPassDto;
+import com.example.danceschool.userpass.UserPassDto;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,6 +1,6 @@
 package com.example.danceschool.user;
 
-import com.example.danceschool.mapper.UserPassMapper;
+import com.example.danceschool.userpass.UserPassMapper;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring", uses = {UserPassMapper.class})
