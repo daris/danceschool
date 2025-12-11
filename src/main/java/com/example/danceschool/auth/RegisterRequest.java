@@ -1,4 +1,4 @@
-package com.example.danceschool.dto.request;
+package com.example.danceschool.auth;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

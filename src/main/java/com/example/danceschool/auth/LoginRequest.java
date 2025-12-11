@@ -1,4 +1,4 @@
-package com.example.danceschool.dto.request;
+package com.example.danceschool.auth;
 
 import lombok.Data;
 

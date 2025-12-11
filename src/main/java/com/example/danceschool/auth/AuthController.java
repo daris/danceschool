@@ -1,9 +1,5 @@
-package com.example.danceschool.controller;
+package com.example.danceschool.auth;
 
-import com.example.danceschool.dto.request.LoginRequest;
-import com.example.danceschool.dto.response.LoginResponse;
-import com.example.danceschool.dto.request.RegisterRequest;
-import com.example.danceschool.service.AuthService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

@@ -1,4 +1,4 @@
-package com.example.danceschool.dto.response;
+package com.example.danceschool.auth;
 
 import com.example.danceschool.user.User;
 import lombok.Data;
