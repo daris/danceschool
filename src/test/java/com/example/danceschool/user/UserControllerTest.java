@@ -1,11 +1,10 @@
-package com.example.danceschool.controller;
+package com.example.danceschool.user;
 
+import com.example.danceschool.controller.BaseControllerTest;
 import com.example.danceschool.model.Course;
-import com.example.danceschool.model.User;
 import com.example.danceschool.model.UserPass;
 import com.example.danceschool.repository.CourseRepository;
 import com.example.danceschool.repository.UserPassRepository;
-import com.example.danceschool.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

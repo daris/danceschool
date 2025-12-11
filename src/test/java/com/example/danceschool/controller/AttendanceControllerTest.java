@@ -4,7 +4,7 @@ import com.example.danceschool.dto.request.AttendanceStatusRequest;
 import com.example.danceschool.model.AttendanceStatus;
 import com.example.danceschool.model.Course;
 import com.example.danceschool.model.Lesson;
-import com.example.danceschool.model.User;
+import com.example.danceschool.user.User;
 import com.example.danceschool.repository.CourseRepository;
 import com.example.danceschool.repository.LessonRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;

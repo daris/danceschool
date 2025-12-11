@@ -1,7 +1,7 @@
 package com.example.danceschool.config;
 
-import com.example.danceschool.model.User;
-import com.example.danceschool.repository.UserRepository;
+import com.example.danceschool.user.User;
+import com.example.danceschool.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;

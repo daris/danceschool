@@ -1,7 +1,7 @@
 package com.example.danceschool.service;
 
-import com.example.danceschool.model.User;
-import com.example.danceschool.repository.UserRepository;
+import com.example.danceschool.user.User;
+import com.example.danceschool.user.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

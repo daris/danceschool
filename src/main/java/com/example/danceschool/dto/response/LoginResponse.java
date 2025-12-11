@@ -1,6 +1,6 @@
 package com.example.danceschool.dto.response;
 
-import com.example.danceschool.model.User;
+import com.example.danceschool.user.User;
 import lombok.Data;
 
 @Data

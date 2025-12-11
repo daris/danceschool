@@ -6,10 +6,10 @@ import com.example.danceschool.exception.UserNotFoundException;
 import com.example.danceschool.mapper.ParticipantMapper;
 import com.example.danceschool.model.Course;
 import com.example.danceschool.model.Participant;
-import com.example.danceschool.model.User;
+import com.example.danceschool.user.User;
 import com.example.danceschool.repository.CourseRepository;
 import com.example.danceschool.repository.ParticipantRepository;
-import com.example.danceschool.repository.UserRepository;
+import com.example.danceschool.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

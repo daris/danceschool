@@ -3,7 +3,7 @@ package com.example.danceschool.controller;
 import com.example.danceschool.dto.request.QrCodeRequest;
 import com.example.danceschool.dto.response.ErrorResponse;
 import com.example.danceschool.dto.response.QrCodeResponse;
-import com.example.danceschool.model.User;
+import com.example.danceschool.user.User;
 import com.example.danceschool.service.QrService;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;

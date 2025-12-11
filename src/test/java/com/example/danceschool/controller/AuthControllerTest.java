@@ -2,8 +2,8 @@ package com.example.danceschool.controller;
 
 import com.example.danceschool.dto.request.LoginRequest;
 import com.example.danceschool.dto.request.RegisterRequest;
-import com.example.danceschool.model.User;
-import com.example.danceschool.repository.UserRepository;
+import com.example.danceschool.user.User;
+import com.example.danceschool.user.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

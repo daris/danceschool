@@ -1,9 +1,5 @@
-package com.example.danceschool.service;
+package com.example.danceschool.user;
 
-import com.example.danceschool.dto.UserDto;
-import com.example.danceschool.mapper.UserMapper;
-import com.example.danceschool.model.User;
-import com.example.danceschool.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

@@ -1,18 +1,14 @@
 package com.example.danceschool.controller;
 
 import com.example.danceschool.jwt.JwtService;
-import com.example.danceschool.model.User;
-import com.example.danceschool.repository.UserRepository;
+import com.example.danceschool.user.User;
+import com.example.danceschool.user.UserRepository;
 import com.example.danceschool.service.CustomUserDetailsService;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
-import org.springframework.security.authentication.TestingAuthenticationToken;
-import org.springframework.security.core.context.SecurityContextHolder;
-
-import java.util.UUID;
 
 public abstract class BaseControllerTest {
 
@@ -28,14 +24,14 @@ public abstract class BaseControllerTest {
     protected UserRepository userRepository;
 
     @TestConfiguration
-    static class TestConfig {
+    static public class TestConfig {
         @Bean @Primary public JwtService mockJwtService() {
             return Mockito.mock(JwtService.class);
         }
         @Bean @Primary public CustomUserDetailsService mockUserDetailsService() { return Mockito.mock(CustomUserDetailsService.class); }
     }
 
-    void setUpCurrentUser() {
+    protected void setUpCurrentUser() {
         // Mock JWT behavior
         Mockito.when(jwtService.extractUsername(authToken)).thenReturn("jan");
         Mockito.when(jwtService.isTokenValid(authToken, "jan")).thenReturn(true);
@@ -50,7 +46,7 @@ public abstract class BaseControllerTest {
         Mockito.when(userDetailsService.loadUserByUsername("jan")).thenReturn(user);
     }
 
-    void setUpCurrentUserAdmin() {
+    protected void setUpCurrentUserAdmin() {
         // Mock JWT behavior
         Mockito.when(jwtService.extractUsername(authToken)).thenReturn("jan");
         Mockito.when(jwtService.isTokenValid(authToken, "jan")).thenReturn(true);

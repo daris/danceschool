@@ -1,7 +1,5 @@
-package com.example.danceschool.controller;
+package com.example.danceschool.user;
 
-import com.example.danceschool.dto.UserDto;
-import com.example.danceschool.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

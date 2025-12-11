@@ -1,9 +1,7 @@
-package com.example.danceschool.mapper;
+package com.example.danceschool.user;
 
-import com.example.danceschool.dto.UserDto;
-import com.example.danceschool.model.User;
+import com.example.danceschool.mapper.UserPassMapper;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring", uses = {UserPassMapper.class})
 public interface UserMapper {
