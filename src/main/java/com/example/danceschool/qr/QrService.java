@@ -3,7 +3,6 @@ package com.example.danceschool.qr;
 import com.example.danceschool.course.CourseDto;
 import com.example.danceschool.course.CourseService;
 import com.example.danceschool.attendance.SetAttendanceStatusDto;
-import com.example.danceschool.exception.UnknownQrCodeType;
 import com.example.danceschool.attendance.AttendanceStatus;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

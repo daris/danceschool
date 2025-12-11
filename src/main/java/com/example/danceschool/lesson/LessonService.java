@@ -1,6 +1,6 @@
 package com.example.danceschool.lesson;
 
-import com.example.danceschool.exception.CourseNotFoundException;
+import com.example.danceschool.course.CourseNotFoundException;
 import com.example.danceschool.course.Course;
 import com.example.danceschool.course.CourseRepository;
 import lombok.RequiredArgsConstructor;

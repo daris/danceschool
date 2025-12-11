@@ -1,7 +1,7 @@
 package com.example.danceschool.participant;
 
-import com.example.danceschool.exception.CourseNotFoundException;
-import com.example.danceschool.exception.UserNotFoundException;
+import com.example.danceschool.course.CourseNotFoundException;
+import com.example.danceschool.user.UserNotFoundException;
 import com.example.danceschool.course.Course;
 import com.example.danceschool.user.User;
 import com.example.danceschool.course.CourseRepository;
