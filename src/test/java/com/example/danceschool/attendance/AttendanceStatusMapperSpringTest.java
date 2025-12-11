@@ -1,8 +1,5 @@
 package com.example.danceschool.attendance;
 
-import com.example.danceschool.dto.internal.SetAttendanceStatusDto;
-import com.example.danceschool.dto.request.AttendanceStatusRequest;
-import com.example.danceschool.model.AttendanceStatus;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

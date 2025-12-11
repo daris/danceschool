@@ -1,7 +1,5 @@
 package com.example.danceschool.attendance;
 
-import com.example.danceschool.dto.internal.SetAttendanceStatusDto;
-import com.example.danceschool.dto.request.AttendanceStatusRequest;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

@@ -1,6 +1,5 @@
-package com.example.danceschool.repository;
+package com.example.danceschool.lesson;
 
-import com.example.danceschool.model.Lesson;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

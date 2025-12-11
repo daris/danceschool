@@ -1,6 +1,5 @@
-package com.example.danceschool.dto.internal;
+package com.example.danceschool.attendance;
 
-import com.example.danceschool.model.AttendanceStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

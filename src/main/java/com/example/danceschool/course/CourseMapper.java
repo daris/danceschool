@@ -1,6 +1,6 @@
 package com.example.danceschool.course;
 
-import com.example.danceschool.mapper.LessonMapper;
+import com.example.danceschool.lesson.LessonMapper;
 import com.example.danceschool.mapper.ParticipantMapper;
 import org.mapstruct.Mapper;
 

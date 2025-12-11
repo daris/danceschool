@@ -1,6 +1,6 @@
 package com.example.danceschool.user;
 
-import com.example.danceschool.model.Attendance;
+import com.example.danceschool.attendance.Attendance;
 import com.example.danceschool.model.UserPass;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;

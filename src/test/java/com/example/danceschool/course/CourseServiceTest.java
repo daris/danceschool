@@ -1,11 +1,11 @@
 package com.example.danceschool.course;
 
 import com.example.danceschool.attendance.AttendanceService;
-import com.example.danceschool.dto.AttendanceDto;
+import com.example.danceschool.attendance.AttendanceDto;
 import com.example.danceschool.dto.websocket.CourseAttendanceUpdateMessage;
-import com.example.danceschool.dto.internal.SetAttendanceStatusDto;
+import com.example.danceschool.attendance.SetAttendanceStatusDto;
 import com.example.danceschool.exception.CourseNotFoundException;
-import com.example.danceschool.model.AttendanceStatus;
+import com.example.danceschool.attendance.AttendanceStatus;
 import com.example.danceschool.service.ParticipantService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

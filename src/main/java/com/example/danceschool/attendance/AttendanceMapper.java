@@ -1,7 +1,5 @@
 package com.example.danceschool.attendance;
 
-import com.example.danceschool.dto.AttendanceDto;
-import com.example.danceschool.model.Attendance;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

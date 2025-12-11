@@ -1,9 +1,6 @@
 package com.example.danceschool.attendance;
 
-import com.example.danceschool.dto.AttendanceDto;
-import com.example.danceschool.model.Attendance;
-import com.example.danceschool.model.AttendanceStatus;
-import com.example.danceschool.model.Lesson;
+import com.example.danceschool.lesson.Lesson;
 import com.example.danceschool.user.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,12 +1,8 @@
-package com.example.danceschool.service;
+package com.example.danceschool.lesson;
 
-import com.example.danceschool.dto.LessonDto;
 import com.example.danceschool.exception.CourseNotFoundException;
-import com.example.danceschool.mapper.LessonMapper;
 import com.example.danceschool.course.Course;
-import com.example.danceschool.model.Lesson;
 import com.example.danceschool.course.CourseRepository;
-import com.example.danceschool.repository.LessonRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

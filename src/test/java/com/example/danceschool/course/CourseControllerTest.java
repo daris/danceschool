@@ -1,8 +1,11 @@
 package com.example.danceschool.course;
 
+import com.example.danceschool.attendance.Attendance;
+import com.example.danceschool.attendance.AttendanceStatus;
 import com.example.danceschool.controller.BaseControllerTest;
+import com.example.danceschool.lesson.Lesson;
 import com.example.danceschool.model.*;
-import com.example.danceschool.repository.LessonRepository;
+import com.example.danceschool.lesson.LessonRepository;
 import com.example.danceschool.user.User;
 import com.example.danceschool.user.UserRepository;
 import com.example.danceschool.repository.ParticipantRepository;

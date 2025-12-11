@@ -1,13 +1,11 @@
 package com.example.danceschool.attendance;
 
 import com.example.danceschool.controller.BaseControllerTest;
-import com.example.danceschool.dto.request.AttendanceStatusRequest;
-import com.example.danceschool.model.AttendanceStatus;
 import com.example.danceschool.course.Course;
-import com.example.danceschool.model.Lesson;
+import com.example.danceschool.lesson.Lesson;
 import com.example.danceschool.user.User;
 import com.example.danceschool.course.CourseRepository;
-import com.example.danceschool.repository.LessonRepository;
+import com.example.danceschool.lesson.LessonRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.BeforeEach;

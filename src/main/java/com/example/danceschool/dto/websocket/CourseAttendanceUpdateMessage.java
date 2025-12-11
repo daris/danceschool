@@ -1,6 +1,6 @@
 package com.example.danceschool.dto.websocket;
 
-import com.example.danceschool.model.AttendanceStatus;
+import com.example.danceschool.attendance.AttendanceStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

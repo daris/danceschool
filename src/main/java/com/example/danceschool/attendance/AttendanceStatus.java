@@ -1,4 +1,4 @@
-package com.example.danceschool.model;
+package com.example.danceschool.attendance;
 
 public enum AttendanceStatus {
     NORMAL,

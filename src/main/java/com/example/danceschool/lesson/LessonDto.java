@@ -1,5 +1,6 @@
-package com.example.danceschool.dto;
+package com.example.danceschool.lesson;
 
+import com.example.danceschool.attendance.AttendanceDto;
 import lombok.Data;
 
 import java.time.Instant;

@@ -1,6 +1,5 @@
-package com.example.danceschool.dto;
+package com.example.danceschool.attendance;
 
-import com.example.danceschool.model.AttendanceStatus;
 import lombok.Data;
 
 import java.util.UUID;

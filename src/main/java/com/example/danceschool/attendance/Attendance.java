@@ -1,5 +1,6 @@
-package com.example.danceschool.model;
+package com.example.danceschool.attendance;
 
+import com.example.danceschool.lesson.Lesson;
 import com.example.danceschool.user.User;
 import jakarta.persistence.*;
 import lombok.Getter;

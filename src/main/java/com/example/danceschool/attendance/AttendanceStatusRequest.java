@@ -1,6 +1,5 @@
-package com.example.danceschool.dto.request;
+package com.example.danceschool.attendance;
 
-import com.example.danceschool.model.AttendanceStatus;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 

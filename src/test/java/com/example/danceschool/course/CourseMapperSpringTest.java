@@ -1,6 +1,6 @@
 package com.example.danceschool.course;
 
-import com.example.danceschool.model.Lesson;
+import com.example.danceschool.lesson.Lesson;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,6 +1,6 @@
 package com.example.danceschool.course;
 
-import com.example.danceschool.dto.LessonDto;
+import com.example.danceschool.lesson.LessonDto;
 import com.example.danceschool.dto.ParticipantDto;
 import lombok.Data;
 
