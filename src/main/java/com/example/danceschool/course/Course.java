@@ -14,6 +14,12 @@ import java.util.UUID;
 @Getter
 @Entity
 @Table(name = "courses")
+@NamedEntityGraph(
+        name = "course-with-lessons",
+        attributeNodes = {
+                @NamedAttributeNode("lessons"),
+        }
+)
 public class Course {
 
     @Id
